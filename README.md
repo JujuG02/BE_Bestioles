@@ -32,6 +32,12 @@ Ce projet consiste à simuler un écosystème d'un aquarium peuplé de bestioles
    ```bash
    ./main
 
+## Élèves
 
+Alexia Caravaca
+Élodie Bottin
+Julien Abraul Guilherme
+Loïc Derrien
+Thomas Georgi
 
 
