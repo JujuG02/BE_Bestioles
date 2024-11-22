@@ -1,11 +1,15 @@
 #include "BestioleCreator.h"
+#include "Carapace.h"
+#include "Camouflage.h"
+#include "Nageoire.h"
+#include "Sensor.h"
 
 Bestiole* BestioleCreator::create() const {
     return new Bestiole();
 }
 
 Bestiole* BestioleCreator::create(Bestiole *baseBestiole, 
-                 const std::string& flag, 
+                 const std::vector<std::string>& flags, 
                  double fov, 
                  double range, 
                  double detectionProb, 
@@ -21,21 +25,16 @@ Bestiole* BestioleCreator::create(Bestiole *baseBestiole,
     else
         res = baseBestiole->clone();
     
-    if(flag=="carapace")
-        int i;
-        //res = new Carapace(res, deathCoeff, speedCoeff);
-    else if(flag=="camouflage")
-        int i;
-        //res = new Camouflage(res, hidingCoeff);
-    else if(flag=="nageoire")
-        int i;
-        //res = new Nageoire(res, speedCoeff);
-    else if(flag=="oreilles")
-        int i;
-        //res = new Sensor(res, range, detectionProb);
-    else if(flag=="yeux")
-        int i;
-        //res = new Sensor(res, range, detectionProb, fov )
+    if(std::find(flags.begin(), flags.end(), "carapace") != flags.end())
+        res = new Carapace(*res, deathCoeff, speedCoeff);
+    if(std::find(flags.begin(), flags.end(), "camouflage") != flags.end())
+        res = new Camouflage(*res, hidingCoeff);
+    if(std::find(flags.begin(), flags.end(), "nageoire") != flags.end())
+        res = new Nageoire(*res, speedCoeff);
+    if(std::find(flags.begin(), flags.end(), "yeux") != flags.end())
+        res = new Sensor(*res, range, detectionProb);
+    if(std::find(flags.begin(), flags.end(), "yeux") != flags.end())
+        res = new Sensor(*res, range, detectionProb, fov );
     
     if(b != nullptr)
         res->setBehavior(*b);

@@ -8,8 +8,8 @@
 class BestioleCreator : public Creator {
     public :
         Bestiole* create() const override;
-        Bestiole* create(Bestiole *baseBestiole = nullptr, 
-                        const std::string& flag = "", 
+        Bestiole* create(Bestiole *baseBestiole = nullptr,
+                        const std::vector<std::string>& flags = {},
                         double fov = 0.0, 
                         double range = 0.0, 
                         double detectionProb = 0.0, 
