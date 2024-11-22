@@ -1,5 +1,5 @@
-main : main.cpp Aquarium.o Bestiole.o Milieu.o BestioleCreator.o Gregaire.o Kamikaze.o Peureuse.o Camouflage.o Carapace.o Nageoire.o Sensor.o
-	g++ -Wall -std=c++11 -o main main.cpp Aquarium.o Bestiole.o Milieu.o BestioleCreator.o Gregaire.o Kamikaze.o Peureuse.o Camouflage.o Nageoire.o Sensor.o Carapace.o -I . -lX11 -lpthread
+main : main.cpp Aquarium.o Bestiole.o Milieu.o BestioleCreator.o Gregaire.o Kamikaze.o Peureuse.o Prevoyante.o Camouflage.o Carapace.o Nageoire.o Sensor.o
+	g++ -Wall -std=c++11 -o main main.cpp Aquarium.o Bestiole.o Milieu.o BestioleCreator.o Gregaire.o Kamikaze.o Peureuse.o Prevoyante.o Camouflage.o Nageoire.o Sensor.o Carapace.o -I . -lX11 -lpthread
 
 Aquarium.o : Aquarium.h Aquarium.cpp
 	g++ -Wall -std=c++11  -c Aquarium.cpp -I .
@@ -21,6 +21,9 @@ Kamikaze.o : Behavior.h Kamikaze.h Kamikaze.cpp
 
 Peureuse.o : Behavior.h Peureuse.h Peureuse.cpp
 	g++ -Wall -std=c++11  -c Peureuse.cpp -I .
+
+Prevoyante.o : Behavior.h Prevoyante.h Prevoyante.cpp
+	g++ -Wall -std=c++11  -c Prevoyante.cpp -I .
 
 Nageoire.o : Decorator.h Nageoire.h Nageoire.cpp
 	g++ -Wall -std=c++11  -c Nageoire.cpp -I .
