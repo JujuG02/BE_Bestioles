@@ -145,3 +145,10 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
    return ( dist <= LIMITE_VUE );
 
 }
+
+
+Bestiole* Bestiole::clone() const
+{
+   //TODO: Implement
+   return new Bestiole( *this );
+}

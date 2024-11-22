@@ -5,6 +5,8 @@
 #include "UImg.h"
 
 #include <iostream>
+#include "Clone.h"
+#include "Behavior.h"
 
 using namespace std;
 
@@ -12,7 +14,7 @@ using namespace std;
 class Milieu;
 
 
-class Bestiole
+class Bestiole : public Clone
 {
 
 private :
@@ -25,11 +27,15 @@ private :
 private :
    int               identite;
    int               x, y;
+   int               age;
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;
 
    T               * couleur;
+
+   Behavior        * behavior;
+   bool            isMultipleBehavior;
 
 private :
    void bouge( int xLim, int yLim );
@@ -47,6 +53,8 @@ public :                                           // Forme canonique :
    void initCoords( int xLim, int yLim );
 
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
+
+   Bestiole* clone() const override;
 
 };
 
