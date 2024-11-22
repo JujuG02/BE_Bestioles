@@ -2,11 +2,14 @@
 #define DECORATOR_H
 
 #include <vector>
+#include "Bestiole.h"
 
-class Decorator {
+class Decorator: public Bestiole {
+    protected:
+        Bestiole *bestiole;
+    
     public:
-        virtual void draw() = 0;
-        virtual ~Decorator() = default;
+        virtual void draw(UImg &support, double x, double y, double orientation) = 0;
 
 };
 
