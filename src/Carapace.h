@@ -5,8 +5,13 @@
 #include <vector>
 
 class Carapace : public Decorator {
+    private:
+        float deathCoeff;
+        float speedCoeff;
+    
     public:
-        void draw() override;
+        Carapace(float deathCoeff, float speedCoeff);
+        void draw(UImg &support, double x, double y, double orientation) override;
 };
 
 #endif
