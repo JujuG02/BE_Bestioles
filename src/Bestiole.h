@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include "Clone.h"
+#include "Behavior.h"
 
 using namespace std;
 
@@ -26,11 +27,15 @@ private :
 private :
    int               identite;
    int               x, y;
+   int               age;
    double            cumulX, cumulY;
    double            orientation;
    double            vitesse;
 
    T               * couleur;
+
+   Behavior        * behavior;
+   bool            isMultipleBehavior;
 
 private :
    void bouge( int xLim, int yLim );
