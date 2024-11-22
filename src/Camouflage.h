@@ -5,8 +5,12 @@
 #include <vector>
 
 class Camouflage : public Decorator {
+    private:
+        float hidingCoeff;
+    
     public:
-        void draw() override;
+        Camouflage(Bestiole &b, float hidingCoeff);
+        void draw(UImg &support, double x, double y, double orientation) override;
 };
 
 #endif

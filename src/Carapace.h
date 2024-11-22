@@ -2,7 +2,9 @@
 #define CARAPACE_H
 
 #include "Decorator.h"
+#include "Bestiole.h"
 #include <vector>
+
 
 class Carapace : public Decorator {
     private:
@@ -10,7 +12,7 @@ class Carapace : public Decorator {
         float speedCoeff;
     
     public:
-        Carapace(float deathCoeff, float speedCoeff);
+        Carapace(Bestiole &b, float deathCoeff, float speedCoeff);
         void draw(UImg &support, double x, double y, double orientation) override;
 };
 

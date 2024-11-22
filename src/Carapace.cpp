@@ -2,6 +2,11 @@
 #include "UImg.h"
 #include <cmath>
 
+Carapace::Carapace(Bestiole &b, float deathCoeff, float speedCoeff) {
+    // Initialize Carapace attributes based on the Bestiole object
+    // Example: this->attribute = bestiole.getAttribute();
+}
+
 void Carapace::draw(UImg &support, double x, double y, double orientation) {
     // Implémentation spécifique de la carapace
     const double width = 20.0;
