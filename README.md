@@ -21,7 +21,7 @@ Ce projet consiste à simuler un écosystème d'un aquarium peuplé de bestioles
 ## Instructions d'Installation
 1. Clonez le dépôt :
    ```bash
-   git clone https://github.com/JujuG02/https://github.com/JujuG02/BE_Bestioles
+   git clone https://github.com/JujuG02/BE_Bestioles
 
 2. Compilez le projet :
    ```bash
@@ -32,6 +32,12 @@ Ce projet consiste à simuler un écosystème d'un aquarium peuplé de bestioles
    ```bash
    ./main
 
+## Élèves
 
+Alexia Caravaca
+Élodie Bottin
+Julien Abraul Guilherme
+Loïc Derrien
+Thomas Georgi
 
 
