@@ -6,12 +6,12 @@
 
 class Sensor : public Decorator {
     private:
-        float fov;
-        float range;
-        float directionProb;
+        double fov;
+        double range;
+        double directionProb;
     
     public:
-        Sensor(Bestiole &b, float fov, float range, float directionProb);
+        Sensor(Bestiole &b, double range, double directionProb, double fov = 0.0);
         void draw(UImg &support, double x, double y, double orientation) override;
 };
 

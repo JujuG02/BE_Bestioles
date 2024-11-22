@@ -8,11 +8,11 @@
 
 class Carapace : public Decorator {
     private:
-        float deathCoeff;
-        float speedCoeff;
+        double deathCoeff;
+        double speedCoeff;
     
     public:
-        Carapace(Bestiole &b, float deathCoeff, float speedCoeff);
+        Carapace(Bestiole &b, double deathCoeff, double speedCoeff);
         void draw(UImg &support, double x, double y, double orientation) override;
 };
 

@@ -6,10 +6,10 @@
 
 class Nageoire : public Decorator {
     private:
-        float speedCoeff;
+        double speedCoeff;
     
     public:
-        Nageoire(Bestiole &b, float speedCoeff);
+        Nageoire(Bestiole &b, double speedCoeff);
         void draw(UImg &support, double x, double y, double orientation) override;
 };
 
