@@ -5,6 +5,7 @@
 #include "UImg.h"
 
 #include <iostream>
+#include "Clone.h"
 
 using namespace std;
 
