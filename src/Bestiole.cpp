@@ -149,6 +149,31 @@ bool Bestiole::jeTeVois( const Bestiole & b ) const
 
 Bestiole* Bestiole::clone() const
 {
-   //TODO: Implement
    return new Bestiole( *this );
+}
+
+void Bestiole::move(Milieu &monMilieu)
+{
+   auto detectedVoisins = monMilieu.getVoisins(*this);
+   if(this->isMultipleBehavior){
+      //TODO: Implement
+   }
+   else{
+      this->behavior->move(detectedVoisins/*this*/);
+   }
+}
+
+void Bestiole::death()
+{
+   //TODO: Implement
+}
+
+void Bestiole::setBehavior(Behavior &behavior)
+{
+    this->behavior = &behavior;
+}
+
+void Bestiole::setVitesse(double vitesse)
+{
+    this->vitesse = vitesse;
 }

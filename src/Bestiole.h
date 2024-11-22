@@ -56,6 +56,12 @@ public :                                           // Forme canonique :
 
    Bestiole* clone() const override;
 
+   void move(Milieu &monMilieu);
+
+   void death();
+   
+   void setBehavior(Behavior &behavior);
+   void setVitesse(double vitesse);
 };
 
 
