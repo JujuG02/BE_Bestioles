@@ -28,18 +28,25 @@ Milieu::~Milieu( void )
 
 void Milieu::step( void )
 {
+   // Remove all Bestioles that are dead cause of age
+   for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; )
+   {
+      if(it->deathByAge()){
+         it = listeBestioles.erase(it);
+      } else {
+         ++it;
+      }
+   }
 
+   // Perform the step
    cimg_forXY( *this, x, y ) fillC( x, y, 0, white[0], white[1], white[2] );
    for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
    {
-
       it->action( *this );
       it->draw( *this );
-
-   } // for
+   }
 
 }
-
 
 int Milieu::nbVoisins( const Bestiole & b )
 {

@@ -1,6 +1,10 @@
 #include "Bestiole.h"
 
 #include "Milieu.h"
+#include "Gregaire.h"
+#include "Peureuse.h"
+#include "Kamikaze.h"
+#include "Prevoyante.h"
 
 #include <cstdlib>
 #include <cmath>
@@ -9,8 +13,11 @@
 const double      Bestiole::AFF_SIZE = 8.;
 const double      Bestiole::MAX_VITESSE = 10.;
 const double      Bestiole::LIMITE_VUE = 30.;
+const int         Bestiole::MAX_AGE = 10000;
+const int         Bestiole::MIN_AGE = 1000;
 
 int               Bestiole::next = 0;
+int               Bestiole::simulationAge = 0;
 
 
 Bestiole::Bestiole( void )
@@ -20,8 +27,11 @@ Bestiole::Bestiole( void )
 
    cout << "const Bestiole (" << identite << ") par defaut" << endl;
 
+   age = rand() % (MAX_AGE - MIN_AGE + 1) + MIN_AGE;
    x = y = 0;
    cumulX = cumulY = 0.;
+   isMultipleBehavior = false;
+   behavior = getRandomBehavior();
    orientation = static_cast<double>( rand() )/RAND_MAX*2.*M_PI;
    vitesse = static_cast<double>( rand() )/RAND_MAX*MAX_VITESSE;
 
@@ -40,21 +50,26 @@ Bestiole::Bestiole( const Bestiole & b )
 
    cout << "const Bestiole (" << identite << ") par copie" << endl;
 
+   age = b.age;
    x = b.x;
    y = b.y;
    cumulX = cumulY = 0.;
+   isMultipleBehavior = b.isMultipleBehavior;
    orientation = b.orientation;
    vitesse = b.vitesse;
    couleur = new T[ 3 ];
    memcpy( couleur, b.couleur, 3*sizeof(T) );
-
+   //TODO: Implement behavior copy
+   //behavior = b.behavior->clone();
+   behavior = getRandomBehavior(); //TODO: Remove this line
 }
 
 
 Bestiole::~Bestiole( void )
 {
-
-   delete[] couleur;
+   //double free() error here : should use smart pointers ?
+   //delete[] couleur;
+   //delete behavior;
 
    cout << "dest Bestiole" << endl;
 
@@ -108,9 +123,9 @@ void Bestiole::bouge( int xLim, int yLim )
 
 void Bestiole::action( Milieu & monMilieu )
 {
-
+   this->move(monMilieu);
    bouge( monMilieu.getWidth(), monMilieu.getHeight() );
-
+   simulationAge++;
 }
 
 
@@ -137,7 +152,7 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 
 bool Bestiole::jeTeVois( const Bestiole & b ) const
 {
-
+   //TODO: a basic bestiole is blind
    double         dist;
 
 
@@ -156,16 +171,36 @@ void Bestiole::move(Milieu &monMilieu)
 {
    auto detectedVoisins = monMilieu.getVoisins(*this);
    if(this->isMultipleBehavior){
-      //TODO: Implement
+      Behavior *b = getRandomBehavior();
+      b->move(detectedVoisins/*,this*/);
    }
    else{
-      this->behavior->move(detectedVoisins/*this*/);
+      this->behavior->move(detectedVoisins/*,this*/);
    }
 }
 
-void Bestiole::death()
+bool Bestiole::deathByAge()
 {
-   //TODO: Implement
+   if(this->age < simulationAge){
+      cout<<"Bestiole "<<this->identite<<" is dead cause of age"<<endl;
+      return true;
+   }
+   return false;
+}
+
+bool Bestiole::collision(double deathProbabilty)
+{
+   double randomValue = static_cast<double>(rand()) / RAND_MAX;
+   if (randomValue < deathProbabilty) {
+      cout<<"Bestiole "<<this->identite<<" is dead cause of collision"<<endl;
+      return true;
+   } else {
+      orientation += M_PI;
+      if (orientation > 2 * M_PI) {
+         orientation -= 2 * M_PI;
+      }
+      return false;
+   }
 }
 
 void Bestiole::setBehavior(Behavior &behavior)
@@ -175,5 +210,52 @@ void Bestiole::setBehavior(Behavior &behavior)
 
 void Bestiole::setVitesse(double vitesse)
 {
-    this->vitesse = vitesse;
+   if(vitesse>MAX_VITESSE){
+      this->vitesse = MAX_VITESSE;
+   }
+   else if(vitesse<=0){
+      //std::cout << "Vitesse must be greater than 0" << std::endl;
+   }
+   else{
+      this->vitesse = vitesse;
+   }
+}
+
+void Bestiole::setIsMultipleBehavior(bool isMultipleBehavior)
+{
+    this->isMultipleBehavior = isMultipleBehavior;
+}
+
+Behavior* Bestiole::getRandomBehavior()
+{
+   int randomValue = rand() % 4;
+   switch (randomValue) {
+      case 0:
+         return new Gregaire();
+      case 1:
+         return new Peureuse();
+      case 2:
+         return new Kamikaze();
+      case 3:
+         return new Prevoyante();
+      default:
+         return nullptr;
+   }
+}
+
+void Bestiole::setOrientation(double orientation)
+{
+    this->orientation = orientation;
+}
+
+void Bestiole::setAge(int age)
+{  
+   //The MIN_AGE is for random generation 
+   //so we consider that the age can be less than MIN_AGE when setting manually
+    if(age>MAX_AGE){
+        this->age = MAX_AGE;
+    }
+    else{
+        this->age = age;
+    }
 }

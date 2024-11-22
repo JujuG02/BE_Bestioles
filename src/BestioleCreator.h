@@ -16,6 +16,8 @@ class BestioleCreator : public Creator {
                         double speedCoeff = 0.0,
                         double hidingCoeff = 0.0,
                         double deathCoeff = 0.0,
+                        bool isMultipleBehavior = false,
+                        int age = 0,
                         Behavior *b = nullptr) const;
 };;
 
