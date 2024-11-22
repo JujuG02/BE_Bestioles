@@ -12,7 +12,7 @@ using namespace std;
 class Milieu;
 
 
-class Bestiole
+class Bestiole : public Clone
 {
 
 private :
@@ -47,6 +47,8 @@ public :                                           // Forme canonique :
    void initCoords( int xLim, int yLim );
 
    friend bool operator==( const Bestiole & b1, const Bestiole & b2 );
+
+   Bestiole* clone() const override;
 
 };
 
