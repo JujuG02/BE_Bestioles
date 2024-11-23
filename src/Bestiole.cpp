@@ -67,13 +67,40 @@ Bestiole::Bestiole( const Bestiole & b )
 
 Bestiole::~Bestiole( void )
 {
-   //double free() error here : should use smart pointers ?
-   //delete[] couleur;
-   //delete behavior;
+   delete[] couleur;
+   delete behavior;
 
    cout << "dest Bestiole" << endl;
 
 }
+
+Bestiole &Bestiole::operator=(const Bestiole &b)
+{
+    if (this != &b) { // Self-assignment check
+        // Free existing memory
+        delete[] couleur;
+        delete behavior;
+
+        // Allocate and copy new memory
+        couleur = new T[3];
+        memcpy(couleur, b.couleur, 3 * sizeof(T));
+
+        //behavior = b.behavior ? b.behavior->clone() : nullptr;
+         behavior = getRandomBehavior(); //TODO: Remove this line
+
+        // Copy other members
+        age = b.age;
+        x = b.x;
+        y = b.y;
+        cumulX = cumulY = 0.;
+        isMultipleBehavior = b.isMultipleBehavior;
+        orientation = b.orientation;
+        vitesse = b.vitesse;
+    }
+
+    return *this;
+}
+
 
 
 void Bestiole::initCoords( int xLim, int yLim )
@@ -153,12 +180,11 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 bool Bestiole::jeTeVois( const Bestiole & b ) const
 {
    //TODO: a basic bestiole is blind
-   double         dist;
-
-
+   /*double         dist;
    dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
-   return ( dist <= LIMITE_VUE );
-
+   return ( dist <= LIMITE_VUE );*/
+   
+   return false;
 }
 
 
