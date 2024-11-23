@@ -19,7 +19,7 @@ class BestioleCreator : public Creator {
                         bool isMultipleBehavior = false,
                         int age = 0,
                         Behavior *b = nullptr) const;
-};;
+};
 
 
 
