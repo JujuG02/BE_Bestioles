@@ -71,6 +71,8 @@ public :                                           // Forme canonique :
    void setIsMultipleBehavior(bool isMultipleBehavior);
    void setOrientation(double orientation);
    void setAge(int age);
+
+   bool isColliding(const Bestiole &b) const;
 };
 
 
