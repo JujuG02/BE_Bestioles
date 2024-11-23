@@ -33,7 +33,7 @@ Bestiole* BestioleCreator::create(Bestiole *baseBestiole,
         res = new Camouflage(*res, hidingCoeff);
     if(std::find(flags.begin(), flags.end(), "nageoire") != flags.end())
         res = new Nageoire(*res, speedCoeff);
-    if(std::find(flags.begin(), flags.end(), "yeux") != flags.end())
+    if(std::find(flags.begin(), flags.end(), "oreille") != flags.end())
         res = new Sensor(*res, range, detectionProb);
     if(std::find(flags.begin(), flags.end(), "yeux") != flags.end())
         res = new Sensor(*res, range, detectionProb, fov );
