@@ -28,18 +28,18 @@ Milieu::~Milieu( void )
 
 void Milieu::step( void )
 {
-
    cimg_forXY( *this, x, y ) fillC( x, y, 0, white[0], white[1], white[2] );
-   for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
+   for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; )
    {
-
-      it->action( *this );
-      it->draw( *this );
-
-   } // for
-
+      if(it->deathByAge()){
+         it = listeBestioles.erase(it);
+      } else {
+         it->action( *this );
+         it->draw( *this );
+         ++it;
+      }
+   }
 }
-
 
 int Milieu::nbVoisins( const Bestiole & b )
 {

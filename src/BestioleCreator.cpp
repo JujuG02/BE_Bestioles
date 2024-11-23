@@ -16,6 +16,8 @@ Bestiole* BestioleCreator::create(Bestiole *baseBestiole,
                  double speedCoeff,
                  double hidingCoeff,
                  double deathCoeff,
+                 bool isMultipleBehavior,
+                 int age,
                  Behavior *b
                  ) const {
     Bestiole* res = nullptr;
@@ -36,6 +38,12 @@ Bestiole* BestioleCreator::create(Bestiole *baseBestiole,
     if(std::find(flags.begin(), flags.end(), "yeux") != flags.end())
         res = new Sensor(*res, range, detectionProb, fov );
     
+    if(isMultipleBehavior)
+        res->setIsMultipleBehavior(isMultipleBehavior);
+    
+    if(age != 0)
+        res->setAge(age);
+
     if(b != nullptr)
         res->setBehavior(*b);
     return res;
