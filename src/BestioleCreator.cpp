@@ -28,23 +28,122 @@ Bestiole* BestioleCreator::create(Bestiole *baseBestiole,
         res = baseBestiole->clone();
     
     if(std::find(flags.begin(), flags.end(), "carapace") != flags.end())
-        res = new Carapace(*res, deathCoeff, speedCoeff);
+        if(deathCoeff==-1.0 || speedCoeff==-1.0)
+            int i;//res= new Carapace(*res);
+        else 
+            res = new Carapace(*res, deathCoeff, speedCoeff);
     if(std::find(flags.begin(), flags.end(), "camouflage") != flags.end())
-        res = new Camouflage(*res, hidingCoeff);
+        if(hidingCoeff==-1.0)
+            int i;//res = new Camouflage(*res);
+        else 
+            res = new Camouflage(*res, hidingCoeff);
     if(std::find(flags.begin(), flags.end(), "nageoire") != flags.end())
-        res = new Nageoire(*res, speedCoeff);
+        if(speedCoeff = -1.0)
+            int i;//res = new Nageoir(*res);
+        else 
+            res = new Nageoire(*res, speedCoeff);
     if(std::find(flags.begin(), flags.end(), "oreille") != flags.end())
-        res = new Sensor(*res, range, detectionProb);
+        if(range == -1.0 || detectionProb == -1.0)
+            int i;//res = new Sensor(*res, false);
+        else 
+            res = new Sensor(*res, range, detectionProb);
     if(std::find(flags.begin(), flags.end(), "yeux") != flags.end())
-        res = new Sensor(*res, range, detectionProb, fov );
+        if(range==-1.0 || detectionProb == -1.0 || fov == -1.0)
+            int i;//res = new Sensor(*res, true)
+        else 
+            res = new Sensor(*res, range, detectionProb, fov );
     
     if(isMultipleBehavior)
         res->setIsMultipleBehavior(isMultipleBehavior);
     
-    if(age != 0)
+    if(age != -1)
         res->setAge(age);
 
     if(b != nullptr)
         res->setBehavior(*b);
     return res;
+}
+
+Bestiole* BestioleCreator::createNageoire(Bestiole *baseBestiole, Behavior *b) {
+    return create(baseBestiole, {"nageoire"}, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, false, -1, b);
+}
+
+Bestiole* BestioleCreator::createNageoireMB(Bestiole *baseBestiole) {
+    return create(baseBestiole, {"nageoire"}, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, true, -1, nullptr);
+}
+
+Bestiole* BestioleCreator::createNageoirCustom(Bestiole *baseBestiole, double speedCoeff, int age, bool isMultipleBehavior, Behavior *b) {
+    return create(baseBestiole, {"nageoire"}, -1.0, -1.0, -1.0, speedCoeff, -1.0, -1.0, isMultipleBehavior, age, b);
+}
+
+Bestiole* BestioleCreator::createCarapace(Bestiole *baseBestiole, Behavior *b) {
+    return create(baseBestiole, {"carapace"}, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, false, -1, b);
+}
+
+Bestiole* BestioleCreator::createCarapaceMB(Bestiole *baseBestiole) {
+    return create(baseBestiole, {"carapace"}, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, true, -1, nullptr);
+}
+
+Bestiole* BestioleCreator::createCarapaceCustom(Bestiole *baseBestiole, double deathCoeff, double speedCoeff, int age, bool isMultipleBehavior, Behavior *b) {
+    return create(baseBestiole, {"carapace"}, -1.0, -1.0, -1.0, speedCoeff, -1.0, deathCoeff, isMultipleBehavior, age, b);
+}
+
+Bestiole* BestioleCreator::createCamouflage(Bestiole *baseBestiole, Behavior *b) {
+    return create(baseBestiole, {"camouflage"}, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, false, -1, b);
+}
+
+Bestiole* BestioleCreator::createCamouflageMB(Bestiole *baseBestiole) {
+    return create(baseBestiole, {"camouflage"}, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, true, -1, nullptr);
+}
+
+Bestiole* BestioleCreator::createCamouflageCustom(Bestiole *baseBestiole, double hidingCoeff, int age, bool isMultipleBehavior, Behavior *b) {
+    return create(baseBestiole, {"camouflage"}, -1.0, -1.0, -1.0, -1.0, hidingCoeff, -1.0, isMultipleBehavior, age, b);
+}
+
+Bestiole* BestioleCreator::createOreille(Bestiole *baseBestiole, Behavior *b) {
+    return create(baseBestiole, {"oreille"}, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, false, -1, b);
+}
+
+Bestiole* BestioleCreator::createOreilleMB(Bestiole *baseBestiole) {
+    return create(baseBestiole, {"oreille"}, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, true, -1, nullptr);
+}
+
+Bestiole* BestioleCreator::createOreilleCustom(Bestiole *baseBestiole, double range, double detectionProb, int age, bool isMultipleBehavior, Behavior *b) {
+    return create(baseBestiole, {"oreille"}, range, detectionProb, -1.0, -1.0, -1.0, -1.0, isMultipleBehavior, age, b);
+}
+
+Bestiole* BestioleCreator::createYeux(Bestiole *baseBestiole, Behavior *b) {
+    return create(baseBestiole, {"yeux"}, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, false, -1, b);
+}
+
+Bestiole* BestioleCreator::createYeuxMB(Bestiole *baseBestiole) {
+    return create(baseBestiole, {"yeux"}, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, true, -1, nullptr);
+}
+
+Bestiole* BestioleCreator::createYeuxCustom(Bestiole *baseBestiole, double range, double detectionProb, double fov, int age, bool isMultipleBehavior, Behavior *b) {
+    return create(baseBestiole, {"yeux"}, range, detectionProb, fov, -1.0, -1.0, -1.0, isMultipleBehavior, age, b);
+}
+
+Bestiole* BestioleCreator::createFullSensor(Bestiole *baseBestiole, Behavior *b) {
+    return create(baseBestiole, {"oreille", "yeux"}, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, false, -1, b);
+}
+
+Bestiole* BestioleCreator::createFullSensorMB(Bestiole *baseBestiole) {
+    return create(baseBestiole, {"oreille", "yeux"}, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, true, -1, nullptr);
+}
+
+Bestiole* BestioleCreator::createFullAccesory(Bestiole *baseBestiole, Behavior *b) {
+    return create(baseBestiole, {"carapace", "camouflage", "nageoire"}, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, false, -1, b);
+}
+
+Bestiole* BestioleCreator::createFullAccesoryMB(Bestiole *baseBestiole) {
+    return create(baseBestiole, {"carapace", "camouflage", "nageoire"}, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, true, -1, nullptr);
+}
+
+Bestiole* BestioleCreator::createFull(Bestiole *baseBestiole, Behavior *b) {
+    return create(baseBestiole, {"carapace", "camouflage", "nageoire", "oreille", "yeux"}, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, false, -1, b);
+}
+
+Bestiole* BestioleCreator::createFullMB(Bestiole *baseBestiole) {
+    return create(baseBestiole, {"carapace", "camouflage", "nageoire", "oreille", "yeux"}, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, true, -1, nullptr);
 }
