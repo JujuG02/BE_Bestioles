@@ -20,43 +20,53 @@ class BestioleCreator : public Creator {
                         int age = -1,
                         Behavior *b = nullptr) const;
         
-        Bestiole* createNageoire(Bestiole *baseBestiole = nullptr, Behavior *b);
-        Bestiole* createNageoireMB(Bestiole *baseBestiole = nullptr);
-        Bestiole* createNageoirCustom(Bestiole *baseBestiole = nullptr,
+        Bestiole* createNageoire(Bestiole *baseBestiole, Behavior *b);
+        Bestiole* createNageoire(Behavior *b);
+        Bestiole* createNageoireMB(Bestiole *baseBestiole);
+        Bestiole* createNageoireMB();
+        Bestiole* createNageoirCustom(Bestiole *baseBestiole,
                                          double speedCoeff,
                                          int age,
                                          bool isMultipleBehavior,
                                          Behavior *b);
 
-        Bestiole* createCarapace(Bestiole *baseBestiole = nullptr, Behavior *b);
-        Bestiole* createCarapaceMB(Bestiole *baseBestiole = nullptr);
-        Bestiole* createCarapaceCustom(Bestiole *baseBestiole = nullptr,
+        Bestiole* createCarapace(Bestiole *baseBestiole, Behavior *b);
+        Bestiole* createCarapace(Behavior *b);
+        Bestiole* createCarapaceMB(Bestiole *baseBestiole);
+        Bestiole* createCarapaceMB();
+        Bestiole* createCarapaceCustom(Bestiole *baseBestiole,
                                          double deathCoeff,
                                          double speedCoeff,
                                          int age,
                                          bool isMultipleBehavior,
                                          Behavior *b);
 
-        Bestiole* createCamouflage(Bestiole *baseBestiole = nullptr, Behavior *b);
-        Bestiole* createCamouflageMB(Bestiole *baseBestiole = nullptr);
-        Bestiole* createCamouflageCustom(Bestiole *baseBestiole = nullptr,
+        Bestiole* createCamouflage(Bestiole *baseBestiole, Behavior *b);
+        Bestiole* createCamouflage(Behavior *b);
+        Bestiole* createCamouflageMB(Bestiole *baseBestiole);
+        Bestiole* createCamouflageMB();
+        Bestiole* createCamouflageCustom(Bestiole *baseBestiole,
                                          double hidingCoeff,
                                          int age,
                                          bool isMultipleBehavior,
                                          Behavior *b);
 
-        Bestiole* createOreille(Bestiole *baseBestiole = nullptr, Behavior *b);
-        Bestiole* createOreilleMB(Bestiole *baseBestiole = nullptr);
-        Bestiole* createOreilleCustom(Bestiole *baseBestiole = nullptr,
+        Bestiole* createOreille(Bestiole *baseBestiole, Behavior *b);
+        Bestiole* createOreille(Behavior *b);
+        Bestiole* createOreilleMB(Bestiole *baseBestiole);
+        Bestiole* createOreilleMB();
+        Bestiole* createOreilleCustom(Bestiole *baseBestiole,
                                          double range,
                                          double detectionProb,
                                          int age,
                                          bool isMultipleBehavior,
                                          Behavior *b);
 
-        Bestiole* createYeux(Bestiole *baseBestiole = nullptr, Behavior *b);
-        Bestiole* createYeuxMB(Bestiole *baseBestiole = nullptr);
-        Bestiole* createYeuxCustom(Bestiole *baseBestiole = nullptr,
+        Bestiole* createYeux(Bestiole *baseBestiole, Behavior *b);
+        Bestiole* createYeux(Behavior *b);
+        Bestiole* createYeuxMB(Bestiole *baseBestiole);
+        Bestiole* createYeuxMB();
+        Bestiole* createYeuxCustom(Bestiole *baseBestiole,
                                          double range,
                                          double detectionProb,
                                          double fov,
@@ -64,14 +74,20 @@ class BestioleCreator : public Creator {
                                          bool isMultipleBehavior,
                                          Behavior *b);
 
-        Bestiole* createFullSensor(Bestiole *baseBestiole = nullptr, Behavior *b);
-        Bestiole* createFullSensorMB(Bestiole *baseBestiole = nullptr);
+        Bestiole* createFullSensor(Bestiole *baseBestiole, Behavior *b);
+        Bestiole* createFullSensor(Behavior *b);
+        Bestiole* createFullSensorMB(Bestiole *baseBestiole);
+        Bestiole* createFullSensorMB();
 
-        Bestiole* createFullAccesory(Bestiole *baseBestiole = nullptr, Behavior *b);
-        Bestiole* createFullAccesoryMB(Bestiole *baseBestiole = nullptr);
+        Bestiole* createFullAccesory(Bestiole *baseBestiole, Behavior *b);
+        Bestiole* createFullAccesory(Behavior *b);
+        Bestiole* createFullAccesoryMB(Bestiole *baseBestiole);
+        Bestiole* createFullAccesoryMB();
 
-        Bestiole* createFull(Bestiole *baseBestiole = nullptr, Behavior *b);
-        Bestiole* createFullMB(Bestiole *baseBestiole = nullptr);    
+        Bestiole* createFull(Bestiole *baseBestiole, Behavior *b);
+        Bestiole* createFull(Behavior *b);
+        Bestiole* createFullMB(Bestiole *baseBestiole);    
+        Bestiole* createFullMB();
 
 };
 
