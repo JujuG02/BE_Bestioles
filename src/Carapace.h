@@ -13,6 +13,7 @@ class Carapace : public Decorator {
     
     public:
         Carapace(Bestiole &b, double deathCoeff, double speedCoeff);
+        Carapace(Bestiole &b);
         void draw(UImg &support, double x, double y, double orientation) override;
 };
 

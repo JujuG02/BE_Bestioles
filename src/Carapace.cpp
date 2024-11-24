@@ -8,6 +8,10 @@ Carapace::Carapace(Bestiole &b, double deathCoeff, double speedCoeff) {
     this->bestiole = &b;
 }
 
+Carapace::Carapace(Bestiole &b) {
+    //TODO: Implementer le constructeur
+}
+
 void Carapace::draw(UImg &support, double x, double y, double orientation) {
     // Implémentation spécifique de la carapace
     const double width = 20.0;

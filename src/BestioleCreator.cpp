@@ -29,31 +29,31 @@ Bestiole* BestioleCreator::create(Bestiole *baseBestiole,
     
     if(std::find(flags.begin(), flags.end(), "carapace") != flags.end()){
         if(deathCoeff==-1.0 || speedCoeff==-1.0)
-            int i;//res= new Carapace(*res);
+            res= new Carapace(*res);
         else 
             res = new Carapace(*res, deathCoeff, speedCoeff);
     }
     if(std::find(flags.begin(), flags.end(), "camouflage") != flags.end()){
         if(hidingCoeff==-1.0)
-            int i;//res = new Camouflage(*res);
+            res = new Camouflage(*res);
         else 
             res = new Camouflage(*res, hidingCoeff);
     }
     if(std::find(flags.begin(), flags.end(), "nageoire") != flags.end()){
         if(speedCoeff == -1.0)
-            int i;//res = new Nageoir(*res);
+            res = new Nageoire(*res);
         else 
             res = new Nageoire(*res, speedCoeff);
     }
     if(std::find(flags.begin(), flags.end(), "oreille") != flags.end()){
         if(range == -1.0 || detectionProb == -1.0)
-            int i;//res = new Sensor(*res, false);
+            res = new Sensor(*res, false);
         else 
             res = new Sensor(*res, range, detectionProb);
     }
     if(std::find(flags.begin(), flags.end(), "yeux") != flags.end()){
         if(range==-1.0 || detectionProb == -1.0 || fov == -1.0)
-            int i;//res = new Sensor(*res, true)
+            res = new Sensor(*res, true);
         else 
             res = new Sensor(*res, range, detectionProb, fov );
     }
