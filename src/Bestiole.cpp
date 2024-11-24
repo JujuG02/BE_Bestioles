@@ -195,14 +195,18 @@ Bestiole* Bestiole::clone() const
 
 void Bestiole::move(Milieu &monMilieu)
 {
+   double changingBehaviorProb = 0.05;
+
    auto detectedVoisins = monMilieu.getVoisins(*this);
    if(this->isMultipleBehavior){
-      Behavior *b = getRandomBehavior();
-      b->move(detectedVoisins/*,this*/);
+      double randomValue = static_cast<double>(rand()) / RAND_MAX;
+      if (randomValue < changingBehaviorProb) {
+         this->setBehavior(*getRandomBehavior());
+      }
    }
-   else{
-      this->behavior->move(detectedVoisins/*,this*/);
-   }
+   
+   this->behavior->move(detectedVoisins/*,this*/);
+
 }
 
 bool Bestiole::deathByAge()
