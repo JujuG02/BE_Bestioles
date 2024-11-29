@@ -1,4 +1,4 @@
-#ifndef PROVOYANTE_H
+#ifndef PREVOYANTE_H
 #define PREVOYANTE_H
 
 #include "Behavior.h"
@@ -7,7 +7,10 @@ class Bestiole;
 
 class Prevoyante : public Behavior {
 public:
-    void move(std::vector<Bestiole> &bestioleList) override;
+    void move(std::vector<Bestiole> &bestioleList, Bestiole& b) override;
+    Prevoyante* clone() const override { 
+        return new Prevoyante(*this); 
+    }
 };
 
 #endif 

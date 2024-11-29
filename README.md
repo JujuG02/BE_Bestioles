@@ -17,6 +17,7 @@ Ce projet consiste à simuler un écosystème d'un aquarium peuplé de bestioles
 - `Aquarium.h` / `Aquarium.cpp` : Définition et implémentation de la classe Aquarium.
 - `Capteurs.h` / `Capteurs.cpp` : Définition et implémentation des capteurs.
 - `Accessoires.h` / `Accessoires.cpp` : Définition et implémentation des accessoires.
+-...
 
 ## Instructions d'Installation
 1. Clonez le dépôt :

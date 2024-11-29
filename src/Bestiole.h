@@ -87,5 +87,4 @@ public :                                           // Forme canonique :
    void setCumulY(double cumulY);
 };
 
-
 #endif

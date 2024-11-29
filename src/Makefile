@@ -13,16 +13,16 @@ Milieu.o : Milieu.h Milieu.cpp
 BestioleCreator.o : Creator.h BestioleCreator.h BestioleCreator.cpp
 	g++ -Wall -std=c++17  -c BestioleCreator.cpp -I .
 
-Gregaire.o : Behavior.h Gregaire.h Gregaire.cpp
+Gregaire.o : Behavior.h Gregaire.h Gregaire.cpp 
 	g++ -Wall -std=c++17  -c Gregaire.cpp -I .
 
-Kamikaze.o : Behavior.h Kamikaze.h Kamikaze.cpp
+Kamikaze.o : Behavior.h Kamikaze.h Kamikaze.cpp 
 	g++ -Wall -std=c++17  -c Kamikaze.cpp -I .
 
-Peureuse.o : Behavior.h Peureuse.h Peureuse.cpp
+Peureuse.o : Behavior.h Peureuse.h Peureuse.cpp 
 	g++ -Wall -std=c++17  -c Peureuse.cpp -I .
 
-Prevoyante.o : Behavior.h Prevoyante.h Prevoyante.cpp
+Prevoyante.o : Behavior.h Prevoyante.h Prevoyante.cpp 
 	g++ -Wall -std=c++17  -c Prevoyante.cpp -I .
 
 Nageoire.o : Decorator.h Nageoire.h Nageoire.cpp
