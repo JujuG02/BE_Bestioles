@@ -21,11 +21,11 @@ class Sensor : public Decorator {
     public:
         Sensor(Bestiole &b, double range, double directionProb, double fov = -1.0);
         Sensor(Bestiole &b, bool isYeux);
-        Sensor(Sensor const &s);
-        Sensor& operator=(Sensor const &s);
-        Sensor* clone() const override;
+        Sensor(Sensor const &s); //might be useless
+        Sensor& operator=(Sensor const &s); //might be useless
+        Sensor* clone() const override; //might be useless
 
-        void draw(UImg &support, double x, double y, double orientation) override;
+        void draw(UImg &support) override final;
         bool jeTeVois(const Bestiole &b) const override;
 };
 

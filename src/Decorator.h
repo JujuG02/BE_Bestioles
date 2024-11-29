@@ -9,7 +9,7 @@ class Decorator: public Bestiole {
         Bestiole *bestiole;
     
     public:
-        virtual void draw(UImg &support, double x, double y, double orientation) = 0;
+        virtual void draw(UImg &support) = 0;
 
 };
 

@@ -50,7 +50,7 @@ public :                                           // Forme canonique :
    Bestiole& operator=(const Bestiole &b);        // Operateur d'affectation
    
    void action( Milieu & monMilieu );
-   void draw( UImg & support );
+   void draw( UImg & support ); //put to virtual if all decorators draw are coded
 
    virtual bool jeTeVois( const Bestiole & b ) const;
 

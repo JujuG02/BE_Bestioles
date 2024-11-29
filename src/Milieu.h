@@ -1,7 +1,6 @@
 #ifndef _MILIEU_H_
 #define _MILIEU_H_
 
-
 #include "UImg.h"
 #include "Bestiole.h"
 
@@ -10,30 +9,26 @@
 
 using namespace std;
 
-
 class Milieu : public UImg
 {
+private:
+   static const T white[];
 
-private :
-   static const T          white[];
+   int width, height;
+   std::vector<Bestiole*> listeBestioles; // Changed to store pointers to Bestiole
 
-   int                     width, height;
-   std::vector<Bestiole>   listeBestioles;
+public:
+   Milieu(int _width, int _height);
+   ~Milieu();
 
-public :
-   Milieu( int _width, int _height );
-   ~Milieu( void );
+   int getWidth() const { return width; }
+   int getHeight() const { return height; }
 
-   int getWidth( void ) const { return width; };
-   int getHeight( void ) const { return height; };
+   void step();
 
-   void step( void );
-
-   void addMember( const Bestiole & b ) { listeBestioles.push_back(b); listeBestioles.back().initCoords(width, height); }
-   int nbVoisins( const Bestiole & b );
-   std::vector<Bestiole> getVoisins(Bestiole & b);
-
+   void addMember(Bestiole* b); // Changed parameter to Bestiole*
+   int nbVoisins(const Bestiole& b);
+   std::vector<Bestiole> getVoisins(Bestiole* b);
 };
-
 
 #endif

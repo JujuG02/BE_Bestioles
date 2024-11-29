@@ -15,6 +15,7 @@ Camouflage::Camouflage(Bestiole &b) {
     this->hidingCoeff = static_cast<double>(std::rand()) / (MAX_HIDE);
 }
 
-void Camouflage::draw(UImg &support, double x, double y, double orientation) {
+void Camouflage::draw(UImg &support) {
     // Implémentation spécifique du camouflage
+    this->bestiole->draw(support);
 }
