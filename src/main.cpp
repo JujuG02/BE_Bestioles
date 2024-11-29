@@ -24,7 +24,8 @@ int main()
    
 
    for ( int i = 1; i <= 20; ++i ){
-      Bestiole* b = julien->createYeux((Behavior*)&p);
+      Bestiole* b = julien->createOreille((Behavior*)&p);
+      b = julien->createCarapace(b, (Behavior*)&p);
       ecosysteme.getMilieu().addMember( b );
    }
    ecosysteme.run();

@@ -2,8 +2,8 @@
 #include "UImg.h"
 #include <cmath>
 
-const double Carapace::MAX_DEATH_COEFF = 0.9;
-const double Carapace::MAX_SPEED_COEFF = 0.9;
+const double Carapace::MIN_DEATH_COEFF = 0.1;
+const double Carapace::MIN_SPEED_COEFF = 0.1;
 
 Carapace::Carapace(Bestiole &b, double deathCoeff, double speedCoeff) {
     this->deathCoeff = deathCoeff;
@@ -15,12 +15,11 @@ Carapace::Carapace(Bestiole &b) {
     this->bestiole = &b;
 
     //génération des valeurs aléatoires
-    std::srand(std::time(nullptr));
-    double randDeath = static_cast<double>(std::rand()) / (MAX_DEATH_COEFF);
-    this->deathCoeff = randDeath>0 ? randDeath : 0.001;
-
-    double randSpeed = static_cast<double>(std::rand()) / (MAX_SPEED_COEFF);
-    this->speedCoeff = randSpeed>0 ? randSpeed : 0.001;
+    double randDeath = MIN_DEATH_COEFF + static_cast<double>(std::rand()) / RAND_MAX * (1 - MIN_DEATH_COEFF);
+    this->deathCoeff = randDeath;
+    double randSpeed = MIN_SPEED_COEFF + static_cast<double>(std::rand()) / RAND_MAX * (1 - MIN_SPEED_COEFF);
+    this->speedCoeff = randSpeed;
+    this->vitesse = this->vitesse*speedCoeff;
 }
 
 void Carapace::draw(UImg &support) {
@@ -48,5 +47,16 @@ void Carapace::draw(UImg &support) {
 }
 
 bool Carapace::collision(double deathProbability){
-    return this->bestiole->collision(deathProbability * this->deathCoeff);
+   double randomValue = static_cast<double>(rand()) / RAND_MAX;
+   randomValue = randomValue * this->deathCoeff;
+   if (randomValue < deathProbability) {
+      cout<<"Bestiole "<<this->identite<<" is dead cause of collision"<<endl;
+      return true;
+   } else {
+      orientation += M_PI;
+      if (orientation > 2 * M_PI) {
+         orientation -= 2 * M_PI;
+      }
+      return false;
+   }
 }

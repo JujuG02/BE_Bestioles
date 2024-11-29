@@ -10,8 +10,8 @@ class Carapace : public Decorator {
     private:
         double deathCoeff;
         double speedCoeff;
-        static const double MAX_SPEED_COEFF;
-        static const double MAX_DEATH_COEFF;
+        static const double MIN_SPEED_COEFF;
+        static const double MIN_DEATH_COEFF;
     
     public:
         Carapace(Bestiole &b, double deathCoeff, double speedCoeff);
