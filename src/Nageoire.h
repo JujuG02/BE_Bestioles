@@ -5,8 +5,13 @@
 #include <vector>
 
 class Nageoire : public Decorator {
+    private:
+        double speedCoeff;
+    
     public:
-        void draw() override;
+        Nageoire(Bestiole &b, double speedCoeff);
+        Nageoire(Bestiole &b);
+        void draw(UImg &support, double x, double y, double orientation) override;
 };
 
 #endif

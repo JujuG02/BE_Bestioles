@@ -17,14 +17,17 @@ class Milieu;
 class Bestiole : public Clone
 {
 
-private :
+protected :
    static const double     AFF_SIZE;
    static const double     MAX_VITESSE;
    static const double     LIMITE_VUE;
+   static const int        MAX_AGE;
+   static const int        MIN_AGE;
 
    static int              next;
+   static int              simulationAge;
 
-private :
+protected :
    int               identite;
    int               x, y;
    int               age;
@@ -44,11 +47,12 @@ public :                                           // Forme canonique :
    Bestiole( void );                               // Constructeur par defaut
    Bestiole( const Bestiole & b );                 // Constructeur de copies
    ~Bestiole( void );                              // Destructeur
-                                                   // Operateur d'affectation binaire par defaut
+   Bestiole& operator=(const Bestiole &b);        // Operateur d'affectation
+   
    void action( Milieu & monMilieu );
    void draw( UImg & support );
 
-   bool jeTeVois( const Bestiole & b ) const;
+   virtual bool jeTeVois( const Bestiole & b ) const;
 
    void initCoords( int xLim, int yLim );
 
@@ -56,6 +60,19 @@ public :                                           // Forme canonique :
 
    Bestiole* clone() const override;
 
+   void move(Milieu &monMilieu);
+
+   virtual bool collision(double deathProbability);
+   bool deathByAge();
+   
+   void setBehavior(Behavior &behavior);
+   Behavior* getRandomBehavior();
+   void setVitesse(double vitesse);
+   void setIsMultipleBehavior(bool isMultipleBehavior);
+   void setOrientation(double orientation);
+   void setAge(int age);
+
+   bool isColliding(const Bestiole &b) const;
 };
 
 

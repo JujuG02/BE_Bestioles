@@ -28,18 +28,37 @@ Milieu::~Milieu( void )
 
 void Milieu::step( void )
 {
+   double collidingDeathProb = 0.1;
 
    cimg_forXY( *this, x, y ) fillC( x, y, 0, white[0], white[1], white[2] );
-   for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
+   for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; )
    {
-
-      it->action( *this );
-      it->draw( *this );
-
-   } // for
-
+      for(auto jt = it + 1; jt != listeBestioles.end();){
+         if(it->isColliding(*jt)){
+            if(jt->collision(collidingDeathProb)){
+               jt = listeBestioles.erase(jt);
+            }
+            else{
+               ++jt;
+            }
+            if(it->collision(collidingDeathProb)){
+               it = listeBestioles.erase(it);
+               break;
+            }
+         } else {
+            ++jt;
+         }
+      }
+      if(it->deathByAge()){
+         it = listeBestioles.erase(it);
+      } 
+      else {
+         it->action( *this );
+         it->draw( *this );
+         ++it;
+      }
+   }
 }
-
 
 int Milieu::nbVoisins( const Bestiole & b )
 {
@@ -53,4 +72,13 @@ int Milieu::nbVoisins( const Bestiole & b )
 
    return nb;
 
+}
+
+std::vector<Bestiole> Milieu::getVoisins(Bestiole & b)
+{
+    std::vector<Bestiole> voisins;
+    for ( std::vector<Bestiole>::iterator it = listeBestioles.begin() ; it != listeBestioles.end() ; ++it )
+      if ( !(b == *it) && b.jeTeVois(*it) )
+         voisins.push_back(*it);
+    return voisins;
 }
