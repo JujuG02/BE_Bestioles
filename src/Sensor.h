@@ -16,10 +16,10 @@ class Sensor : public Decorator {
 
         double fov;
         double range;
-        double directionProb;
+        double detectionProb;
     
     public:
-        Sensor(Bestiole &b, double range, double directionProb, double fov = -1.0);
+        Sensor(Bestiole &b, double range, double detectionProb, double fov = -1.0);
         Sensor(Bestiole &b, bool isYeux);
         Sensor(Sensor const &s); //might be useless
         Sensor& operator=(Sensor const &s); //might be useless

@@ -177,11 +177,11 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 bool Bestiole::jeTeVois(const Bestiole & b) const
 {
    //TODO: a basic bestiole is blind
-   double         dist;
+   /*double         dist;
    dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
-   return ( dist <= LIMITE_VUE );
+   return ( dist <= LIMITE_VUE );*/
    
-   //return false;
+   return false;
 }
 
 Bestiole* Bestiole::clone() const

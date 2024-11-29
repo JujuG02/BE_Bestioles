@@ -14,6 +14,8 @@ class Camouflage : public Decorator {
         Camouflage(Bestiole &b, double hidingCoeff);
         Camouflage(Bestiole &b);
         void draw(UImg &support) override final;
+
+        double getHidingCoeff() const;
 };
 
 #endif

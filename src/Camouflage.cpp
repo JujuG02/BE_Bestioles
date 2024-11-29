@@ -19,3 +19,7 @@ void Camouflage::draw(UImg &support) {
     // Implémentation spécifique du camouflage
     this->bestiole->draw(support);
 }
+
+double Camouflage::getHidingCoeff() const {
+    return hidingCoeff;
+}

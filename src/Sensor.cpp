@@ -1,4 +1,5 @@
 #include "Sensor.h"
+#include "Camouflage.h"
 #include "UImg.h"
 
 
@@ -10,9 +11,9 @@ const double Sensor::MIN_RANGE = 10;
 const double Sensor::MAX_DETEC_PROB = 1;
 const double Sensor::MIN_DETEC_PROB = 0.5;
 
-Sensor::Sensor(Bestiole &b, double range, double directionProb, double fov){
+Sensor::Sensor(Bestiole &b, double range, double detectionProb, double fov){
     this->range = range;
-    this->directionProb = directionProb;
+    this->detectionProb = detectionProb;
     if(fov==-1.0){
         fov = 2*M_PI;
     }
@@ -28,13 +29,13 @@ Sensor::Sensor(Bestiole &b, bool isYeux){
         this->fov = 2*M_PI;
     }
     this->range = MIN_RANGE + static_cast<double>(rand()) / RAND_MAX * (MAX_RANGE - MIN_RANGE);
-    this->directionProb = MIN_DETEC_PROB + static_cast<double>(rand()) / RAND_MAX * (MAX_DETEC_PROB - MIN_DETEC_PROB);
+    this->detectionProb = MIN_DETEC_PROB + static_cast<double>(rand()) / RAND_MAX * (MAX_DETEC_PROB - MIN_DETEC_PROB);
     this->bestiole = &b;
 }
 
 Sensor::Sensor(Sensor const &s){
     this->range = s.range;
-    this->directionProb = s.directionProb;
+    this->detectionProb = s.detectionProb;
     this->fov = s.fov;
     this->bestiole = s.bestiole->clone();
     std::cout<<"copie s"<<std::endl;
@@ -43,7 +44,7 @@ Sensor::Sensor(Sensor const &s){
 Sensor& Sensor::operator=(Sensor const &s){
     if(this != &s){
         this->range = s.range;
-        this->directionProb = s.directionProb;
+        this->detectionProb = s.detectionProb;
         this->fov = s.fov;
         this->bestiole = s.bestiole;
     }
@@ -67,6 +68,16 @@ bool Sensor::jeTeVois(const Bestiole &b) const{
     double dist = std::sqrt( (this->x - bx)*(this->x - bx) + (this->y - by)*(this->y - by) );
     double angle = std::atan2(by - this->y, bx - this->x);
 
-    return (dist<=this->range
-        && std::abs(angle - this->bestiole->getOrientation()) <= this->fov/2);
+    bool detecable = dist<=this->range
+        && std::abs(angle - this->bestiole->getOrientation()) <= this->fov/2;
+    
+    double randomValue = static_cast<double>(rand()) / RAND_MAX;
+    double detectionProba = this->detectionProb;
+    const Camouflage* camo = dynamic_cast<const Camouflage*>(&b);
+    if (camo) {
+        double hidingCoeff = camo->getHidingCoeff();
+        detectionProba = detectionProba * hidingCoeff;
+    }
+
+    return detecable && randomValue < detectionProba;
 }
