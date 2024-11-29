@@ -67,7 +67,6 @@ public :                                           // Forme canonique :
    
    void setBehavior(Behavior &behavior);
    Behavior* getRandomBehavior();
-   double getOrientation() const;
    void setVitesse(double vitesse);
    void setIsMultipleBehavior(bool isMultipleBehavior);
    void setOrientation(double orientation);

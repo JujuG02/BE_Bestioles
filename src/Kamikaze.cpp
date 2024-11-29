@@ -6,7 +6,10 @@
 #include <cmath>
 
 void Kamikaze::move(std::vector<Bestiole> &bestioleList, Bestiole &b) {
-    // Vérifier que la liste n'est pas vide
+
+    const double VITESSE_MULTIPLIER = 10;
+
+    // on vérifie que la liste n'est pas vide
     if (bestioleList.empty()) return;
     //on trouve la bestiole là plus proche
     double minDist = std::numeric_limits<double>::infinity();
@@ -16,7 +19,7 @@ void Kamikaze::move(std::vector<Bestiole> &bestioleList, Bestiole &b) {
     // Ignorer la bestiole elle-même
         if (&(*it) == &b) continue;
 
-        double dist = sqrt((b.x-(*it).x)*(b.x-(*it).x) + (b.y-(*it).y)*(b.y-(*it).y));
+        double dist = sqrt((b.getX() - (*it).getX()) * (b.getX() - (*it).getX()) + (b.getY() - (*it).getY()) * (b.getY() - (*it).getY()));
 
         if(minDist> dist){
             minDist = dist;
@@ -24,11 +27,6 @@ void Kamikaze::move(std::vector<Bestiole> &bestioleList, Bestiole &b) {
         }
     }
 
-    // Si une bestiole proche a été trouvée, bouger vers elle
-    if (closeBestiole != nullptr) {
-        b.bouge(closeBestiole->x, closeBestiole->y);
-    }
-
-
-
+    b.setOrientation(atan((b.getY() - closeBestiole->getY())/b.getX() - closeBestiole->getX()));
+    b.setVitesse(b.getVitesse()*VITESSE_MULTIPLIER);
 }

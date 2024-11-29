@@ -3,6 +3,8 @@
 
 #include "Behavior.h"
 #include <vector>
+#include <iostream>
+
 class Bestiole;
 
 class Kamikaze : public Behavior {
