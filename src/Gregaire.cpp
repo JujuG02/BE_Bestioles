@@ -1,24 +1,24 @@
+
 #include "Gregaire.h"
 #include "Bestiole.h"
-#include <numeric> 
+#include <cmath>
 
+/*
+ * Comportement grégaire : la bestiole ajuste son orientation et vitesse sur la moyenne des bestioles environnantes
+ */
 void Gregaire::move(std::vector<Bestiole>& bestioleList, Bestiole& b) {
-    // Vérifie si la liste des bestioles est vide
     if (bestioleList.empty()) return;
-    double sumX = 0.0;
-    double sumY = 0.0;
 
-    // Parcourt chaque bestiole de la liste pour additionner leurs coordonnées 
+    double sumOrientation = 0.0;
+
     for (const auto& bestiole : bestioleList) {
-        sumX += bestiole.getCumulX();
-        sumY += bestiole.getCumulY();
+        sumOrientation += bestiole.getOrientation();
     }
 
-    // Calcule la moyenne des coordonnées 
-    double avgX = sumX / bestioleList.size();
-    double avgY = sumY / bestioleList.size();
+    double avgOrientation = sumOrientation / bestioleList.size();
 
-    // Met à jour les coordonnées de la bestiole grégaire pour suivre la moyenne
-    b.setCumulX(avgX);
-    b.setCumulY(avgY);
+    b.setOrientation(avgOrientation);
+
+    b.setCumulX(std::cos(b.getOrientation()) * b.getVitesse());
+    b.setCumulY(-std::sin(b.getOrientation()) * b.getVitesse());
 }
