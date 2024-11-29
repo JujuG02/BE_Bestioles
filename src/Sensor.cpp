@@ -59,6 +59,7 @@ bool Sensor::jeTeVois(const Bestiole &b) const {
     int by = b.getY();
     double dist = std::sqrt( (this->bestiole->getX() - bx)*(this->bestiole->getX() - bx) + (this->bestiole->getY() - by)*(this->bestiole->getY() - by) );
     double angle = std::atan2(by - this->bestiole->getY(), bx - this->bestiole->getX());
+    std::cout<<"sensor marche"<<std::endl;
 
     return (dist<=this->range
         && std::abs(angle - this->bestiole->getOrientation()) <= this->fov/2);
