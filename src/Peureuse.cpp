@@ -10,8 +10,6 @@ void Peureuse::move(std::vector<Bestiole> &bestioleList) {
     double avgY = 0.0;
 
     for (const auto &b : bestioleList) {
-        if (this != &b && this->jeTeVois(b)) { // Vérifier que ce n'est pas la même bestiole et qu'elle la voit.
-        //Pb car il faut appeler une bestiole qui possède l'attribut peureuse : jeTeVois est pas fait dans Peureuse.h
             nearbyBestioles++;
             avgX += b.getX();
             avgY += b.getY();
@@ -19,7 +17,7 @@ void Peureuse::move(std::vector<Bestiole> &bestioleList) {
     }
 
     if (nearbyBestioles > MAX_BESTIOLES) {
-        // Calculer le barycentre
+        // Calculer le barycentre des bestioles environnantes 
         avgX /= nearbyBestioles;
         avgY /= nearbyBestioles;
 

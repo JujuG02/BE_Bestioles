@@ -4,7 +4,6 @@
 
 void Gregaire::move(std::vector<Bestiole> &bestioleList) {
     if (bestioleList.empty()) return;
-
     double sumX = 0.0;
     double sumY = 0.0;
 
