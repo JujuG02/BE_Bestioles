@@ -73,6 +73,18 @@ public :                                           // Forme canonique :
    void setAge(int age);
 
    bool isColliding(const Bestiole &b) const;
+
+   int getX();
+   int getY();
+   double getCumulX();
+   double getCumulY();
+   double getOrientation();
+   double getVitesse();
+
+   void setX(int x);
+   void setY(int y);
+   void setCumulX(double cumulX);
+   void setCumulY(double cumulY);
 };
 
 

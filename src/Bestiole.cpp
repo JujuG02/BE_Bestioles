@@ -294,3 +294,53 @@ void Bestiole::setAge(int age)
         this->age = age;
     }
 }
+
+int Bestiole::getX()
+{
+    return x;
+}
+
+int Bestiole::getY()
+{
+    return y;
+}
+
+double Bestiole::getOrientation()
+{
+    return orientation;
+}
+
+double Bestiole::getVitesse()
+{
+    return vitesse;
+}
+
+double Bestiole::getCumulX()
+{
+    return cumulX;
+}
+
+double Bestiole::getCumulY()
+{
+    return cumulY;
+}
+
+void Bestiole::setX(int x)
+{
+    this->x = x;
+}
+
+void Bestiole::setY(int y)
+{
+    this->y = y;
+}
+
+void Bestiole::setCumulX(double cumulX)
+{
+    this->cumulX = cumulX;
+}
+
+void Bestiole::setCumulY(double cumulY)
+{
+    this->cumulY = cumulY;
+}
