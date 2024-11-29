@@ -20,6 +20,8 @@ class BestioleCreator : public Creator {
                         int age = -1,
                         Behavior *b = nullptr) const;
         
+        Bestiole* createBasic(Behavior *b);
+        
         Bestiole* createNageoire(Bestiole *baseBestiole, Behavior *b);
         Bestiole* createNageoire(Behavior *b);
         Bestiole* createNageoireMB(Bestiole *baseBestiole);

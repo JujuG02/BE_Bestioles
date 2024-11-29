@@ -68,6 +68,10 @@ Bestiole* BestioleCreator::create(Bestiole *baseBestiole,
     return res;
 }
 
+Bestiole* BestioleCreator::createBasic(Behavior *b) {
+    return create(nullptr, {}, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, false, -1, b);
+}
+
 Bestiole* BestioleCreator::createNageoire(Bestiole *baseBestiole, Behavior *b) {
     return create(baseBestiole, {"nageoire"}, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, false, -1, b);
 }
