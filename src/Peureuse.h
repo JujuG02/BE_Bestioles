@@ -7,7 +7,10 @@ class Bestiole;
 
 class Peureuse : public Behavior {
 public:
-    void move(std::vector<Bestiole> &bestioleList) override;
+    void move(std::vector<Bestiole> &bestioleList, Bestiole& b) override;
+    Peureuse* clone() const override { 
+        return new Peureuse(*this); 
+    }
 };
 
 #endif 

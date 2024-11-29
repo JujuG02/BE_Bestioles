@@ -1,29 +1,30 @@
 #include "Peureuse.h"
 #include "Bestiole.h"
-#include <cmath> 
+#include <cmath>
 
-void Peureuse::move(std::vector<Bestiole> &bestioleList) {
-    const int MAX_BESTIOLES = 5; 
+void Peureuse::move(std::vector<Bestiole>& bestioleList, Bestiole& b) {
+    const int MAX_BESTIOLES = 5;
     const double FLEE_SPEED_MULTIPLIER = 2.0; 
     int nearbyBestioles = 0;
     double avgX = 0.0;
     double avgY = 0.0;
 
-    for (const auto &b : bestioleList) {
-            nearbyBestioles++;
-            avgX += b.getX();
-            avgY += b.getY();
-        }
+    // Parcourt chaque bestiole de la liste pour accumuler leurs coordonnées
+    for (const auto& bestiole : bestioleList) {
+        nearbyBestioles++;
+        avgX += bestiole.getX();
+        avgY += bestiole.getY();
     }
 
+    // Si le nombre de bestioles environnantes dépasse MAX_BESTIOLES, la bestiole fuit
     if (nearbyBestioles > MAX_BESTIOLES) {
         // Calculer le barycentre des bestioles environnantes 
         avgX /= nearbyBestioles;
         avgY /= nearbyBestioles;
 
         // Calculer la direction opposée au barycentre
-        double fleeX = this->getX() - avgX;
-        double fleeY = this->getY() - avgY;
+        double fleeX = b.getX() - avgX;
+        double fleeY = b.getY() - avgY;
 
         // Normaliser le vecteur de fuite
         double fleeMagnitude = std::sqrt(fleeX * fleeX + fleeY * fleeY);
@@ -31,13 +32,12 @@ void Peureuse::move(std::vector<Bestiole> &bestioleList) {
         fleeY = (fleeY / fleeMagnitude) * FLEE_SPEED_MULTIPLIER;
 
         // Ajuster les coordonnées cumulées pour la fuite
-        this->cumulX = fleeX;
-        this->cumulY = fleeY;
+        b.setCumulX(fleeX);
+        b.setCumulY(fleeY);
         
     } else {
-
-        // Reprendre la vitesse de croisière
-        this->cumulX = std::cos(this->orientation) * this->vitesse;
-        this->cumulY = -std::sin(this->orientation) * this->vitesse;
+        // Reprendre la vitesse classique
+        b.setCumulX(std::cos(b.getOrientation()) * b.getVitesse());
+        b.setCumulY(-std::sin(b.getOrientation()) * b.getVitesse());
     }
 }

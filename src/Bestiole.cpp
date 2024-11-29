@@ -205,7 +205,7 @@ void Bestiole::move(Milieu &monMilieu)
       }
    }
    
-   this->behavior->move(detectedVoisins/*,this*/);
+   this->behavior->move(detectedVoisins,*this);
 
 }
 
@@ -240,7 +240,7 @@ bool Bestiole::isColliding(const Bestiole &b) const{
 
 void Bestiole::setBehavior(Behavior &behavior)
 {
-    this->behavior = &behavior;
+   this->behavior = &behavior;
 }
 
 void Bestiole::setVitesse(double vitesse)
@@ -258,7 +258,7 @@ void Bestiole::setVitesse(double vitesse)
 
 void Bestiole::setIsMultipleBehavior(bool isMultipleBehavior)
 {
-    this->isMultipleBehavior = isMultipleBehavior;
+   this->isMultipleBehavior = isMultipleBehavior;
 }
 
 Behavior* Bestiole::getRandomBehavior()
@@ -280,17 +280,61 @@ Behavior* Bestiole::getRandomBehavior()
 
 void Bestiole::setOrientation(double orientation)
 {
-    this->orientation = orientation;
+   this->orientation = orientation;
 }
 
 void Bestiole::setAge(int age)
 {  
    //The MIN_AGE is for random generation 
    //so we consider that the age can be less than MIN_AGE when setting manually
-    if(age>MAX_AGE){
-        this->age = MAX_AGE;
-    }
-    else{
-        this->age = age;
-    }
+   if(age>MAX_AGE){
+      this->age = MAX_AGE;
+   }else{
+      this->age = age;
+   }
 }
+
+double Bestiole::getCumulX() const
+{
+   return this->cumulX;
+}
+
+double Bestiole::getCumulY() const
+{
+   return this->cumulY;
+}
+
+void Bestiole::setCumulX(double cumulX)
+{
+   this->cumulX = cumulX;
+}
+
+void Bestiole::setCumulY(double cumulY)
+{
+   this->cumulY = cumulY;
+}
+
+int Bestiole::getX() const { 
+   return this->x; 
+} 
+
+int Bestiole::getY() const { 
+   return this->y; 
+} 
+
+double Bestiole::getOrientation() const { 
+   return this->orientation; 
+} 
+
+double Bestiole::getVitesse() const { 
+   return this->vitesse; 
+}  
+
+void Bestiole::setX(int x) { 
+   this->x = x; 
+} 
+
+void Bestiole::setY(int y) { 
+   this->y;
+}
+
