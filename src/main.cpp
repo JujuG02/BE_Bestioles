@@ -18,7 +18,7 @@ int main()
 
 
    for ( int i = 1; i <= 20; ++i ) {
-      Bestiole* b = bc->createYeux(nullptr);
+      Bestiole* b = bc->create(nullptr);
       ecosysteme.getMilieu().addMember( (*b) );
    }
    ecosysteme.run();
