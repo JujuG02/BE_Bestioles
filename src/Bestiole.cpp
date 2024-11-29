@@ -278,6 +278,10 @@ Behavior* Bestiole::getRandomBehavior()
    }
 }
 
+double Bestiole::getOrientation() const{
+   return orientation;
+}
+
 void Bestiole::setOrientation(double orientation)
 {
    this->orientation = orientation;

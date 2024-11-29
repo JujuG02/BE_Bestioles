@@ -3,3 +3,5 @@
 void Prevoyante::move(std::vector<Bestiole> &bestioleList, Bestiole& b) {
     // Implémentation spécifique du comportement Provoyant
 }
+
+ Behavior* clone(){}
