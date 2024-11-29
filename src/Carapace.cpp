@@ -2,6 +2,9 @@
 #include "UImg.h"
 #include <cmath>
 
+const double Carapace::MAX_DEATH_COEFF = 0.9;
+const double Carapace::MAX_SPEED_COEFF = 0.9;
+
 Carapace::Carapace(Bestiole &b, double deathCoeff, double speedCoeff) {
     this->deathCoeff = deathCoeff;
     this->speedCoeff = speedCoeff;
@@ -9,7 +12,15 @@ Carapace::Carapace(Bestiole &b, double deathCoeff, double speedCoeff) {
 }
 
 Carapace::Carapace(Bestiole &b) {
-    //TODO: Implementer le constructeur
+    this->bestiole = &b;
+
+    //génération des valeurs aléatoires
+    std::srand(std::time(nullptr));
+    double randDeath = static_cast<double>(std::rand()) / (MAX_DEATH_COEFF);
+    this->deathCoeff = randDeath>0 ? randDeath : 0.001;
+
+    double randSpeed = static_cast<double>(std::rand()) / (MAX_SPEED_COEFF);
+    this->speedCoeff = randSpeed>0 ? randSpeed : 0.001;
 }
 
 void Carapace::draw(UImg &support, double x, double y, double orientation) {
@@ -32,4 +43,8 @@ void Carapace::draw(UImg &support, double x, double y, double orientation) {
     support.draw_line(x2, y2, x3, y3, black);
     support.draw_line(x3, y3, x4, y4, black);
     support.draw_line(x4, y4, x1, y1, black);
+}
+
+bool Carapace::collision(double deathProbability){
+    return this->bestiole->collision(deathProbability * this->deathCoeff);
 }

@@ -1,8 +1,12 @@
 #include "Aquarium.h"
 #include "Milieu.h"
 #include "Bestiole.h"
-#include "Gregaire.h"
+#include "BestioleCreator.h"
 #include "Behavior.h"
+#include "Gregaire.h"
+#include "Peureuse.h"
+#include "Prevoyante.h"
+#include "Kamikaze.h"
 
 #include <iostream>
 
