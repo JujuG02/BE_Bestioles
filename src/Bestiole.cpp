@@ -295,32 +295,32 @@ void Bestiole::setAge(int age)
     }
 }
 
-int Bestiole::getX()
+int Bestiole::getX() const
 {
     return x;
 }
 
-int Bestiole::getY()
+int Bestiole::getY() const
 {
     return y;
 }
 
-double Bestiole::getOrientation()
+double Bestiole::getOrientation() const
 {
     return orientation;
 }
 
-double Bestiole::getVitesse()
+double Bestiole::getVitesse() const
 {
     return vitesse;
 }
 
-double Bestiole::getCumulX()
+double Bestiole::getCumulX() const
 {
     return cumulX;
 }
 
-double Bestiole::getCumulY()
+double Bestiole::getCumulY() const
 {
     return cumulY;
 }

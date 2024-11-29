@@ -74,12 +74,12 @@ public :                                           // Forme canonique :
 
    bool isColliding(const Bestiole &b) const;
 
-   int getX();
-   int getY();
-   double getCumulX();
-   double getCumulY();
-   double getOrientation();
-   double getVitesse();
+   int getX() const;
+   int getY() const;
+   double getCumulX() const;
+   double getCumulY() const;
+   double getOrientation() const;
+   double getVitesse() const;
 
    void setX(int x);
    void setY(int y);
