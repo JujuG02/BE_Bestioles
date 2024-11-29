@@ -15,6 +15,6 @@ Nageoire::Nageoire(Bestiole &b) {
     this->speedCoeff = (static_cast<double>(std::rand()) / (MAX_SPEED_COEFF)); // +1 pour être entre [1;MAX_SPEED_COEFF]
 }
 
-void Nageoire::draw(UImg &support, double x, double y, double orientation) {
-    // Implémentation spécifique de la nageoire
+void Nageoire::draw(UImg &support) {
+    this->bestiole->draw(support);
 }

@@ -23,9 +23,9 @@ Carapace::Carapace(Bestiole &b) {
     this->speedCoeff = randSpeed>0 ? randSpeed : 0.001;
 }
 
-void Carapace::draw(UImg &support, double x, double y, double orientation) {
+void Carapace::draw(UImg &support) {
     // Implémentation spécifique de la carapace
-    const double width = 20.0;
+   /*const double width = 20.0;
     const double height = 10.0;
     const double angle = orientation * M_PI / 180.0;
 
@@ -42,7 +42,9 @@ void Carapace::draw(UImg &support, double x, double y, double orientation) {
     support.draw_line(x1, y1, x2, y2, black);
     support.draw_line(x2, y2, x3, y3, black);
     support.draw_line(x3, y3, x4, y4, black);
-    support.draw_line(x4, y4, x1, y1, black);
+    support.draw_line(x4, y4, x1, y1, black);*/
+
+    this->bestiole->draw(support);
 }
 
 bool Carapace::collision(double deathProbability){

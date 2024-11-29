@@ -1,4 +1,7 @@
 #include "Sensor.h"
+#include "UImg.h"
+
+
 
 const double Sensor::MAX_FOV = M_PI;
 const double Sensor::MIN_FOV = 0.1;
@@ -34,6 +37,7 @@ Sensor::Sensor(Sensor const &s){
     this->directionProb = s.directionProb;
     this->fov = s.fov;
     this->bestiole = s.bestiole->clone();
+    std::cout<<"copie s"<<std::endl;
 }
 
 Sensor& Sensor::operator=(Sensor const &s){
@@ -43,23 +47,25 @@ Sensor& Sensor::operator=(Sensor const &s){
         this->fov = s.fov;
         this->bestiole = s.bestiole;
     }
+    std::cout<<"affect s"<<std::endl;
     return *this;
 }
 
 Sensor* Sensor::clone() const {
+    std::cout<<"clone s"<<std::endl;
     return new Sensor(*this);
 }
 
-void Sensor::draw(UImg &support, double x, double y, double orientation) {
-    // Implémentation spécifique du capteur
+void Sensor::draw(UImg &support) {
+    // Implémentation spécifique du sensor
+    this->bestiole->draw(support);
 }
 
-bool Sensor::jeTeVois(const Bestiole &b) const {
+bool Sensor::jeTeVois(const Bestiole &b) const{
     int bx = b.getX();
     int by = b.getY();
-    double dist = std::sqrt( (this->bestiole->getX() - bx)*(this->bestiole->getX() - bx) + (this->bestiole->getY() - by)*(this->bestiole->getY() - by) );
-    double angle = std::atan2(by - this->bestiole->getY(), bx - this->bestiole->getX());
-    std::cout<<"sensor marche"<<std::endl;
+    double dist = std::sqrt( (this->x - bx)*(this->x - bx) + (this->y - by)*(this->y - by) );
+    double angle = std::atan2(by - this->y, bx - this->x);
 
     return (dist<=this->range
         && std::abs(angle - this->bestiole->getOrientation()) <= this->fov/2);
