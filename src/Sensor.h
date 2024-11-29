@@ -17,6 +17,12 @@ class Sensor : public Decorator {
         double fov;
         double range;
         double directionProb;
+        static const double MAX_FOV;
+        static const double MIN_FOV;
+        static const double MAX_RANGE;
+        static const double MIN_RANGE;
+        static const double MAX_DETEC_PROB;
+        static const double MIN_DETEC_PROB;
     
     public:
         Sensor(Bestiole &b, double range, double directionProb, double fov = -1.0);
