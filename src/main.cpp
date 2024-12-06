@@ -9,6 +9,7 @@
 #include "Prevoyante.h"
 #include "Kamikaze.h"
 #include "Sensor.h"
+#include "BestioleCreator.h"
 
 #include <iostream>
 
@@ -25,9 +26,8 @@ int main()
    Kamikaze* p = new Kamikaze();
 
 
-   for ( int i = 1; i <= 20; ++i ){
+   for ( int i = 1; i <= 2; ++i ){
       Bestiole* b = julien->createOreille(p);
-      b = julien->createCarapace(b, p);
       ecosysteme.getMilieu().addMember( b );
    }
 
