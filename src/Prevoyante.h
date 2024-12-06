@@ -11,6 +11,7 @@ public:
     Prevoyante* clone() const override { 
         return new Prevoyante(*this); 
     }
+
 };
 
 #endif 

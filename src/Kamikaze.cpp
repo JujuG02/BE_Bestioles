@@ -39,3 +39,4 @@ void Kamikaze::move(std::vector<Bestiole> &bestioleList, Bestiole &b) {
     //std::cout<<b.getOrientation()<<endl;
     b.setVitesse(VITESSE_MULTIPLIER*closeBestiole->getVitesse());
     }
+

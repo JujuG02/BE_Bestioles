@@ -4,8 +4,6 @@
 #include "Gregaire.h"
 #include "Peureuse.h"
 #include "Kamikaze.h"
-#include "Gregaire.h"
-#include "Peureuse.h"
 #include "Prevoyante.h"
 #include "Kamikaze.h"
 #include "Sensor.h"
@@ -15,29 +13,31 @@
 
 using namespace std;
 
-
 int main()
 {
-
-   Aquarium       ecosysteme( 640, 480, 30 );
+   Aquarium ecosysteme(640, 480, 30);
 
    BestioleCreator* julien = new BestioleCreator();
    
-   Kamikaze* p = new Kamikaze();
+   Gregaire* g = new Gregaire();
+   Peureuse* p = new Peureuse();
 
+   for ( int i = 1; i <= 5; ++i ){
+      Bestiole* b = julien->createOreille(g);
 
-   for ( int i = 1; i <= 2; ++i ){
-      Bestiole* b = julien->createOreille(p);
       ecosysteme.getMilieu().addMember( b );
    }
 
-
+   for ( int i = 1; i <= 5; ++i ){
+      Bestiole* b = julien->createOreilleCustom(nullptr, 100 , 1, 10000, false, p);
+      ecosysteme.getMilieu().addMember( b );
+   }
 
    ecosysteme.run();
 
    delete julien;
+   delete g;
    delete p;
 
    return 0;
-
 }

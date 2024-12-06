@@ -80,6 +80,7 @@ public :                                           // Forme canonique :
    double getOrientation() const;
    double getVitesse() const;
    int getIdentite() const;
+   T* getCouleur() const;
 
    void setX(int x);
    void setY(int y);
