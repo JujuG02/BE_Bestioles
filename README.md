@@ -17,8 +17,6 @@ Ce projet consiste à simuler un écosystème d'un aquarium peuplé de bestioles
 - `Bestiole.h` / `Bestiole.cpp` : Définition et implémentation de la classe Bestiole.
 - `BestioleCreator.h` / `BestioleCreator.cpp` : Définition et implémentation de la classe de création des bestioles.
 - `Aquarium.h` / `Aquarium.cpp` : Définition et implémentation de la classe Aquarium.
-- `Capteurs.h` / `Capteurs.cpp` : Définition et implémentation des capteurs.
-- `Accessoires.h` / `Accessoires.cpp` : Définition et implémentation des accessoires.
 - `Camouflage.h` / `Camouflage.cpp` : Définition et implémentation de l'accessoire de camouflage.
 - `Gregaire.h` / `Gregaire.cpp` : Définition et implémentation de la classe représentant le comportement grégaire.
 - `Kamikaze.h` / `Kamikaze.cpp` : Définition et implémentation de la classe représentant le comportement kamikaze.
