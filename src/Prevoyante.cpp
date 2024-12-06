@@ -70,7 +70,7 @@ void Prevoyante::move(std::vector<Bestiole> &bestioleList, Bestiole& b) {
 
         //calcul de la vitesse pour atteindre cette position
         double distance = sqrt(dx * dx + dy * dy);
-        double vitesse = distance / 30.0; 
+        double vitesse = distance ; 
         b.setVitesse(vitesse);
     }
 }
