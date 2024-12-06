@@ -49,7 +49,7 @@ public :                                           // Forme canonique :
    virtual ~Bestiole();                              // Destructeur
    Bestiole& operator=(const Bestiole &b);        // Operateur d'affectation
    void action( Milieu & monMilieu );
-   virtual void draw( UImg & support, double x, double y, double orientation ); //put to virtual if all decorators draw are coded
+   virtual void draw( UImg & support, double x, double y, double orientation, T* couleur ); //put to virtual if all decorators draw are coded
 
    virtual bool jeTeVois( const Bestiole & b ) const;
 

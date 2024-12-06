@@ -43,7 +43,6 @@ void Milieu::step()
             {
                 if ((*jt)->collision(collidingDeathProb))
                 {
-                    //std::cout<<"destruction bestiole "<<(*jt)<<" "<<(*jt)->getIdentite()<<std::endl;
                     delete *jt;
                     jt = listeBestioles.erase(jt); // Erase from vector
                 }
@@ -53,7 +52,6 @@ void Milieu::step()
                 }
                 if ((*it)->collision(collidingDeathProb))
                 {
-                    //std::cout<<"destruction bestiole "<<(*it)<<" "<<(*it)->getIdentite()<<std::endl;
                     delete *it;
                     it = listeBestioles.erase(it); // Erase from vector
                     break;
@@ -66,40 +64,16 @@ void Milieu::step()
         }
         if (it != listeBestioles.end() && (*it)->deathByAge())
         {
-            //std::cout<<"destruction bestiole "<<(*it)<<" "<<(*it)->getIdentite()<<std::endl;
             delete *it;
             it = listeBestioles.erase(it); // Erase from vector
         }
         else if (it != listeBestioles.end())
         {
             (*it)->action(*this);
-            (*it)->draw(*this, (*it)->getX(), (*it)->getY(), (*it)->getOrientation());
+            (*it)->draw(*this, (*it)->getX(), (*it)->getY(), (*it)->getOrientation(), (*it)->getCouleur());
             ++it;
         }
     }
-
-    /*listeBestioles.erase(std::remove_if(listeBestioles.begin(), listeBestioles.end(), [&](Bestiole* b) {
-        for (auto jt = listeBestioles.begin(); jt != listeBestioles.end(); ++jt)
-        {
-            if (b != *jt && b->isColliding(**jt))
-            {
-                if (b->collision(collidingDeathProb))
-                {
-                    std::cout << "destruction bestiole " << b << " " << b->getIdentite() << std::endl;
-                    delete b;
-                    return true;
-                }
-                if ((*jt)->collision(collidingDeathProb))
-                {
-                    std::cout << "destruction bestiole " << *jt << " " << (*jt)->getIdentite() << std::endl;
-                    delete *jt;
-                    listeBestioles.erase(jt);
-                    return false;
-                }
-            }
-        }
-        return false;
-    }), listeBestioles.end());*/
 
 }
 

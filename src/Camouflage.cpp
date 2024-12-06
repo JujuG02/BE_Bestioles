@@ -36,15 +36,15 @@ Camouflage::~Camouflage() {
     delete this->bestiole;
 }
 
-void Camouflage::draw(UImg & support, double x, double y, double orientation) {
+void Camouflage::draw(UImg & support, double x, double y, double orientation, T* couleur) {
     // Implémentation spécifique du camouflage
-    T* couleur = new T[3];
+    T* couleurtoset = new T[3];
     T* couleurbis = this->getCouleur();
-    couleur[0] = couleurbis[0]*DIV_COLOR;
-    couleur[1] = couleurbis[1]*DIV_COLOR;
-    couleur[2] = couleurbis[2]*DIV_COLOR;
-    this->setCouleur(couleur);
-    this->bestiole->draw(support, x, y, orientation);
+    couleurtoset[0] = couleurbis[0]*DIV_COLOR;
+    couleurtoset[1] = couleurbis[1]*DIV_COLOR;
+    couleurtoset[2] = couleurbis[2]*DIV_COLOR;
+    this->setCouleur(couleurtoset);
+    this->bestiole->draw(support, x, y, orientation, couleurtoset);
 }
 
 bool Camouflage::collision(double deathProbability) {
