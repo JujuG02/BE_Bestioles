@@ -19,23 +19,24 @@ int main()
 {
 
    Aquarium       ecosysteme( 640, 480, 30 );
-   Gregaire g;
-   Peureuse p;
+
+   BestioleCreator* julien = new BestioleCreator();
+   
+   Kamikaze* p = new Kamikaze();
 
 
    for ( int i = 1; i <= 20; ++i ){
-      Bestiole* b = julien->createOreille((Behavior*)&p);
-      b = julien->createCarapace(b, (Behavior*)&p);
+      Bestiole* b = julien->createOreille(p);
+      b = julien->createCarapace(b, p);
       ecosysteme.getMilieu().addMember( b );
    }
 
-   for ( int i = 1; i <= 20; ++i ){
-      Bestiole* b = new Bestiole();
-      b->setBehavior((Behavior&) p);
-      ecosysteme.getMilieu().addMember( *b );
-   }
+
 
    ecosysteme.run();
+
+   delete julien;
+   delete p;
 
    return 0;
 

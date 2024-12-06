@@ -12,6 +12,11 @@ class Nageoire : public Decorator {
     public:
         Nageoire(Bestiole &b, double speedCoeff);
         Nageoire(Bestiole &b);
+        Nageoire(Nageoire const &n);
+        Nageoire& operator=(Nageoire const &n);
+        Nageoire* clone() const override;
+        ~Nageoire() override final;
+        
         void draw(UImg &support) override final;
 };
 

@@ -59,11 +59,11 @@ Bestiole::Bestiole( const Bestiole & b )
    vitesse = b.vitesse;
    couleur = new T[ 3 ];
    memcpy( couleur, b.couleur, 3*sizeof(T) );
-   behavior = b.behavior->clone();
+   behavior = (b.behavior) ? b.behavior->clone() : nullptr;
 }
 
 
-Bestiole::~Bestiole( void )
+Bestiole::~Bestiole()
 {
    delete[] couleur;
    delete behavior;
@@ -83,7 +83,7 @@ Bestiole &Bestiole::operator=(const Bestiole &b)
         couleur = new T[3];
         memcpy(couleur, b.couleur, 3 * sizeof(T));
 
-        behavior = b.behavior->clone();
+        behavior = (b.behavior) ? b.behavior->clone() : nullptr;
 
         // Copy other members
         age = b.age;
@@ -191,7 +191,7 @@ Bestiole* Bestiole::clone() const
 
 void Bestiole::move(Milieu &monMilieu)
 {
-   double changingBehaviorProb = 0.05;
+   double changingBehaviorProb = 0.05;    //should be set as global constant in the future
 
    auto detectedVoisins = monMilieu.getVoisins(this);
    if(this->isMultipleBehavior){
@@ -236,6 +236,7 @@ bool Bestiole::isColliding(const Bestiole &b) const{
 
 void Bestiole::setBehavior(Behavior &behavior)
 {
+   delete this->behavior;
    this->behavior = &behavior;
 }
 
@@ -320,6 +321,11 @@ double Bestiole::getCumulY() const
    return cumulY;
 }
 
+int Bestiole::getIdentite() const
+{
+   return identite;
+}
+
 void Bestiole::setX(int x)
 {
    this->x = x;
@@ -338,4 +344,10 @@ void Bestiole::setCumulX(double cumulX)
 void Bestiole::setCumulY(double cumulY)
 {
    this->cumulY = cumulY;
+}
+
+void Bestiole::setCouleur(T *couleur)
+{
+   delete[] this->couleur;
+   this->couleur = couleur;
 }
