@@ -4,8 +4,6 @@
 #include "Gregaire.h"
 #include "Peureuse.h"
 #include "Kamikaze.h"
-#include "Gregaire.h"
-#include "Peureuse.h"
 #include "Prevoyante.h"
 #include "Kamikaze.h"
 #include "Sensor.h"
@@ -15,7 +13,6 @@
 
 using namespace std;
 
-
 int main()
 {
 
@@ -23,8 +20,9 @@ int main()
 
    BestioleCreator* julien = new BestioleCreator();
    
-   Kamikaze* p = new Kamikaze();
-
+   Gregaire* g = new Gregaire();
+   Peureuse* p = new Peureuse();
+   Kamikaze* k = new Kamikaze();
 
    /*
    for ( int i = 1; i <= 5; ++i ){

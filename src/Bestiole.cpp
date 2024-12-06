@@ -8,6 +8,7 @@
 
 #include <cstdlib>
 #include <cmath>
+#include <iostream>
 
 
 const double      Bestiole::AFF_SIZE = 8.;
@@ -273,6 +274,7 @@ Behavior* Bestiole::getRandomBehavior()
          return nullptr;
    }
 }
+
 
 void Bestiole::setOrientation(double orientation)
 {

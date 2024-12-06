@@ -12,12 +12,23 @@ Ce projet consiste à simuler un écosystème d'un aquarium peuplé de bestioles
 - **Capteurs et Accessoires** : Les bestioles peuvent être équipées de capteurs (yeux, oreilles) et d'accessoires (nageoires, carapace, camouflage) pour interagir avec leur environnement ;
 
 ## Structure du Code
+
 - `main.cpp` : Point d'entrée du programme.
 - `Bestiole.h` / `Bestiole.cpp` : Définition et implémentation de la classe Bestiole.
+- `BestioleCreator.h` / `BestioleCreator.cpp` : Définition et implémentation de la classe de création des bestioles.
 - `Aquarium.h` / `Aquarium.cpp` : Définition et implémentation de la classe Aquarium.
-- `Capteurs.h` / `Capteurs.cpp` : Définition et implémentation des capteurs.
-- `Accessoires.h` / `Accessoires.cpp` : Définition et implémentation des accessoires.
--...
+- `Camouflage.h` / `Camouflage.cpp` : Définition et implémentation de l'accessoire de camouflage.
+- `Gregaire.h` / `Gregaire.cpp` : Définition et implémentation de la classe représentant le comportement grégaire.
+- `Kamikaze.h` / `Kamikaze.cpp` : Définition et implémentation de la classe représentant le comportement kamikaze.
+- `Milieu.h` / `Milieu.cpp` : Définition et implémentation de la classe Milieu, qui représente l'environnement de l'aquarium.
+- `Nageoire.h` / `Nageoire.cpp` : Définition et implémentation de l'accessoire de nageoire.
+- `Peureuse.h` / `Peureuse.cpp` : Définition et implémentation de la classe représentant le comportement peureux.
+- `Prevoyante.h` / `Prevoyante.cpp` : Définition et implémentation de la classe représentant le comportement prévoyant.
+- `Sensor.h` / `Sensor.cpp` : Définition et implémentation des capteurs sensoriels (oreilles, yeux...) pour les bestioles.
+- `Carapace.h` / `Carapace.cpp` : Définition et implémentation de la classe représentant l'accessoire de carapace.
+- `Clone.h` : Définition de l'interface de clonage pour les bestioles.
+- `Creator.h` : Définition de l'interface de création pour les bestioles.
+- `Decorator.h` : Définition de la classe de décoration pour ajouter des fonctionnalités aux bestioles.
 
 ## Instructions d'Installation
 1. Clonez le dépôt :
