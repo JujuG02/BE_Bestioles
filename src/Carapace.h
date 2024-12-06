@@ -23,6 +23,7 @@ class Carapace : public Decorator {
         
         void draw(UImg & support, double x, double y, double orientation) override final;
         bool collision(double deathProbability);
+        bool jeTeVois(const Bestiole &b) const override final;
 };
 
 #endif

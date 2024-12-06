@@ -59,3 +59,11 @@ void Nageoire::draw(UImg & support, double x, double y, double orientation) {
     
     this->bestiole->draw(support, x, y, orientation);
 }
+
+bool Nageoire::collision(double deathProbability) {
+    return this->bestiole->collision(deathProbability);
+}
+
+bool Nageoire::jeTeVois(const Bestiole &b) const {
+    return this->bestiole->jeTeVois(b);
+}

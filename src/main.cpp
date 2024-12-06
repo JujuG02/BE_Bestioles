@@ -27,17 +27,19 @@ int main()
 
    for (int i = 1; i <= 10; ++i){
       Bestiole* c = julien->createCarapace(p);
+      c = julien->createOreille(c, p);
       //c = julien->createYeuxMB(c);
-      c = julien->createCamouflageMB(c);
+      //c = julien->createCamouflageMB(c);
       ecosysteme.getMilieu().addMember( c );
    }
    
    
-   
+   /*
    for (int i = 1; i <= 5; ++i){
       Bestiole* d = julien->createYeux(p);
       ecosysteme.getMilieu().addMember( d );
    }
+   */
    
 
    ecosysteme.run();

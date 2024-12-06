@@ -92,6 +92,10 @@ void Sensor::draw(UImg & support, double x, double y, double orientation) {
     this->bestiole->draw(support, x, y, orientation);
 }
 
+bool Sensor::collision(double deathProbability){
+    return this->bestiole->collision(deathProbability);
+}
+
 bool Sensor::jeTeVois(const Bestiole &b) const{
     int bx = b.getX();
     int by = b.getY();
