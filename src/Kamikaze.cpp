@@ -8,7 +8,6 @@
 void Kamikaze::move(std::vector<Bestiole> &bestioleList, Bestiole &b) {
 
     const double VITESSE_MULTIPLIER = 10;
-    const double DISTANCE_CRITIQUE = 50.0;
 
     // on vérifie que la liste n'est pas vide
     if (bestioleList.empty()) return;
@@ -35,8 +34,9 @@ void Kamikaze::move(std::vector<Bestiole> &bestioleList, Bestiole &b) {
     double dy = closeBestiole->getY() - b.getY();
     double orientation = atan2(-dy, dx);
 
-    std::cout<< "Le bestiole "<< b.getIdentite()<< "a pour orientation"<<b.getOrientation() <<','<<endl;
+    //std::cout<< "Le bestiole "<< b.getIdentite()<< "a pour orientation"<<b.getOrientation() <<','<<endl;
     b.setOrientation(orientation);
-    std::cout<<b.getOrientation()<<endl;
+    //std::cout<<b.getOrientation()<<endl;
     b.setVitesse(VITESSE_MULTIPLIER*closeBestiole->getVitesse());
     }
+

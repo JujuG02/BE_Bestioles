@@ -24,6 +24,7 @@ int main()
 
    for ( int i = 1; i <= 5; ++i ){
       Bestiole* b = julien->createOreille(g);
+
       ecosysteme.getMilieu().addMember( b );
    }
 
