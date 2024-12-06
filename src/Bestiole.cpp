@@ -181,11 +181,11 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 bool Bestiole::jeTeVois( const Bestiole & b ) const
 {
    //TODO: a basic bestiole is blind
-   /*double         dist;
+   double         dist;
    dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
-   return ( dist <= LIMITE_VUE );*/
+   return ( dist <= LIMITE_VUE );
    
-   return false;
+   //return false;
 }
 
 
@@ -297,47 +297,52 @@ void Bestiole::setAge(int age)
    }
 }
 
+int Bestiole::getX() const
+{
+    return x;
+}
+
+int Bestiole::getY() const
+{
+    return y;
+}
+
+double Bestiole::getOrientation() const
+{
+    return orientation;
+}
+
+double Bestiole::getVitesse() const
+{
+    return vitesse;
+}
+
 double Bestiole::getCumulX() const
 {
-   return this->cumulX;
+    return cumulX;
 }
 
 double Bestiole::getCumulY() const
 {
-   return this->cumulY;
+    return cumulY;
+}
+
+void Bestiole::setX(int x)
+{
+    this->x = x;
+}
+
+void Bestiole::setY(int y)
+{
+    this->y = y;
 }
 
 void Bestiole::setCumulX(double cumulX)
 {
-   this->cumulX = cumulX;
+    this->cumulX = cumulX;
 }
 
 void Bestiole::setCumulY(double cumulY)
 {
-   this->cumulY = cumulY;
+    this->cumulY = cumulY;
 }
-
-int Bestiole::getX() const { 
-   return x; 
-} 
-
-int Bestiole::getY() const { 
-   return y; 
-} 
-
-double Bestiole::getOrientation() const { 
-   return this->orientation; 
-} 
-
-double Bestiole::getVitesse() const { 
-   return this->vitesse; 
-}  
-
-void Bestiole::setX(int x) { 
-   this->x = x; 
-} 
-
-void Bestiole::setY(int y) { 
-   this->y = y;
-}
-

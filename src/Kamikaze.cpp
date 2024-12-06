@@ -8,6 +8,7 @@
 void Kamikaze::move(std::vector<Bestiole> &bestioleList, Bestiole &b) {
 
     const double VITESSE_MULTIPLIER = 10;
+    const double DISTANCE_CRITIQUE = 50.0;
 
     // on vérifie que la liste n'est pas vide
     if (bestioleList.empty()) return;
@@ -19,14 +20,23 @@ void Kamikaze::move(std::vector<Bestiole> &bestioleList, Bestiole &b) {
     // Ignorer la bestiole elle-même
         if (&(*it) == &b) continue;
 
-        double dist = sqrt((b.getX() - (*it).getX()) * (b.getX() - (*it).getX()) + (b.getY() - (*it).getY()) * (b.getY() - (*it).getY()));
+    // Calculer la distance
+        double dx = b.getX() - it->getX();
+        double dy = b.getY() - it->getY();
+        double dist = sqrt(dx * dx + dy * dy);
 
-        if(minDist> dist){
+        if(minDist> dist){//on choisi le plus proche voisin
             minDist = dist;
             closeBestiole = &(*it);
         }
     }
 
-    b.setOrientation(atan((b.getY() - closeBestiole->getY())/b.getX() - closeBestiole->getX()));
-    b.setVitesse(b.getVitesse()*VITESSE_MULTIPLIER);
-}
+    double dx = closeBestiole->getX() - b.getX();
+    double dy = closeBestiole->getY() - b.getY();
+    double orientation = atan2(-dy, dx);
+
+    std::cout<< "Le bestiole "<< b.getIdentite()<< "a pour orientation"<<b.getOrientation() <<','<<endl;
+    b.setOrientation(orientation);
+    std::cout<<b.getOrientation()<<endl;
+    b.setVitesse(VITESSE_MULTIPLIER*closeBestiole->getVitesse());
+    }

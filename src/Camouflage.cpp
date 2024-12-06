@@ -1,4 +1,6 @@
 #include "Camouflage.h"
+const double Camouflage::MAX_HIDE = 0;
+const double Camouflage::MIN_HIDE = 1;
 
 Camouflage::Camouflage(Bestiole &b, double hidingCoeff) {
     this->hidingCoeff = hidingCoeff;
@@ -7,6 +9,10 @@ Camouflage::Camouflage(Bestiole &b, double hidingCoeff) {
 
 Camouflage::Camouflage(Bestiole &b) {
     //TODO: Implementer le constructeur
+    this->bestiole = &b;
+
+    std::srand(std::time(nullptr));
+    this->hidingCoeff = static_cast<double>(std::rand()) / (MAX_HIDE);
 }
 
 void Camouflage::draw(UImg &support, double x, double y, double orientation) {
