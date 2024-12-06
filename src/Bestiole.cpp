@@ -153,7 +153,7 @@ void Bestiole::action( Milieu & monMilieu )
    simulationAge++;
 }
 
-void Bestiole::draw( UImg & support, double x, double y, double orientation )
+void Bestiole::draw( UImg & support, double x, double y, double orientation, T* couleur )
 {
 
    double         xt = x + cos( orientation )*AFF_SIZE/2.1;

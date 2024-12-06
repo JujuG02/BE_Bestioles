@@ -21,7 +21,7 @@ class Carapace : public Decorator {
         Carapace* clone() const override;
         ~Carapace() override final;
         
-        void draw(UImg & support, double x, double y, double orientation) override final;
+        void draw(UImg & support, double x, double y, double orientation, T* couleur) override final;
         bool collision(double deathProbability);
         bool jeTeVois(const Bestiole &b) const override final;
 };

@@ -20,14 +20,14 @@ int main()
 
    BestioleCreator* julien = new BestioleCreator();
    
-   Gregaire* g = new Gregaire();
+   Peureuse* g = new Peureuse();
    Kamikaze* k = new Kamikaze();
    Prevoyante* p = new Prevoyante();
 
 
    for (int i = 1; i <= 10; ++i){
-      Bestiole* c = julien->createCarapace(p);
-      c = julien->createOreille(c, p);
+      Bestiole* c = julien->createCarapace(g);
+      c = julien->createOreille(c, g);
       //c = julien->createYeuxMB(c);
       //c = julien->createCamouflageMB(c);
       ecosysteme.getMilieu().addMember( c );

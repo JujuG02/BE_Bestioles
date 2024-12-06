@@ -19,7 +19,7 @@ class Camouflage : public Decorator {
         Camouflage* clone() const override;
         ~Camouflage() override final;
         
-        void draw(UImg & support, double x, double y, double orientation) override final;
+        void draw(UImg & support, double x, double y, double orientation, T* couleur) override final;
         bool collision(double deathProbability);
         bool jeTeVois(const Bestiole &b) const override final;
 

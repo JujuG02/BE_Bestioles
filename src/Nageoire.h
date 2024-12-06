@@ -17,7 +17,7 @@ class Nageoire : public Decorator {
         Nageoire* clone() const override;
         ~Nageoire() override final;
         
-        void draw(UImg & support, double x, double y, double orientation) override final;
+        void draw(UImg & support, double x, double y, double orientation, T* couleur) override final;
         bool collision(double deathProbability) override final;
         bool jeTeVois(const Bestiole &b) const override final;
 };

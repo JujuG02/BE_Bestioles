@@ -45,7 +45,7 @@ Carapace::~Carapace() {
     delete this->bestiole;
 }
 
-void Carapace::draw(UImg & support, double x, double y, double orientation) {  
+void Carapace::draw(UImg & support, double x, double y, double orientation, T* couleur) {  
     // Implémentation spécifique de la carapace
     unsigned char black[] = {0, 0, 0};
     const double num_points = 6;
@@ -62,7 +62,7 @@ void Carapace::draw(UImg & support, double x, double y, double orientation) {
     
     
 
-    this->bestiole->draw(support, x, y, orientation);
+    this->bestiole->draw(support, x, y, orientation, couleur);
 }
 
 bool Carapace::collision(double deathProbability){

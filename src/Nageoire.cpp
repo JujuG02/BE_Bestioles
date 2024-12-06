@@ -37,7 +37,7 @@ Nageoire::~Nageoire() {
     delete this->bestiole;
 }
 
-void Nageoire::draw(UImg & support, double x, double y, double orientation) {
+void Nageoire::draw(UImg & support, double x, double y, double orientation, T* couleur) {
     // Affichage de la bestiole
     double xt = x + cos( orientation )*AFF_SIZE/2.1;
     double yt = y - sin( orientation )*AFF_SIZE/2.1;
@@ -57,7 +57,7 @@ void Nageoire::draw(UImg & support, double x, double y, double orientation) {
                           x2, y2, x3, y3, couleur);
     
     
-    this->bestiole->draw(support, x, y, orientation);
+    this->bestiole->draw(support, x, y, orientation, couleur);
 }
 
 bool Nageoire::collision(double deathProbability) {

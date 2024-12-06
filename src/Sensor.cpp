@@ -57,7 +57,7 @@ Sensor::~Sensor(){
     delete this->bestiole;
 }
 
-void Sensor::draw(UImg & support, double x, double y, double orientation) {
+void Sensor::draw(UImg & support, double x, double y, double orientation, T* couleur) {
     // Implémentation spécifique du sensor
     double startAngle = orientation - fov / 2;
     double endAngle = orientation + fov / 2;
@@ -89,7 +89,7 @@ void Sensor::draw(UImg & support, double x, double y, double orientation) {
         support.draw_polygon(points, orange, 0.2);
     }
     
-    this->bestiole->draw(support, x, y, orientation);
+    this->bestiole->draw(support, x, y, orientation, couleur);
 }
 
 bool Sensor::collision(double deathProbability){
