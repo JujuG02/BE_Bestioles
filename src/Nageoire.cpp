@@ -37,6 +37,25 @@ Nageoire::~Nageoire() {
     delete this->bestiole;
 }
 
-void Nageoire::draw(UImg &support) {
-    this->bestiole->draw(support);
+void Nageoire::draw(UImg & support, double x, double y, double orientation) {
+    // Affichage de la bestiole
+    double xt = x + cos( orientation )*AFF_SIZE/2.1;
+    double yt = y - sin( orientation )*AFF_SIZE/2.1;
+    //support.draw_ellipse( x, y, AFF_SIZE, AFF_SIZE/5., -orientation/M_PI*180., couleur );
+    //support.draw_circle( xt, yt, AFF_SIZE/2., couleur );
+
+    // Implémentation spécifique de la nageoire
+    double finWidth =  1.5;
+    double finHeight = 2.5;
+    double x2 = x + cos(orientation - M_PI / 2.) * AFF_SIZE * finWidth;
+    double y2 = y - sin(orientation - M_PI / 2.) * AFF_SIZE * finWidth;
+    double x3 = x + cos(orientation + M_PI / 2.) * AFF_SIZE * finWidth;
+    double y3 = y - sin(orientation + M_PI / 2.) * AFF_SIZE * finWidth;
+
+    support.draw_triangle(xt + cos( orientation ) * finHeight * AFF_SIZE/2.1,
+                          yt - sin( orientation ) *  finHeight * AFF_SIZE/2.1,
+                          x2, y2, x3, y3, couleur);
+    
+    
+    this->bestiole->draw(support, x, y, orientation);
 }

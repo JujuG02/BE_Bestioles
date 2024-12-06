@@ -73,7 +73,7 @@ void Milieu::step()
         else if (it != listeBestioles.end())
         {
             (*it)->action(*this);
-            (*it)->draw(*this);
+            (*it)->draw(*this, (*it)->getX(), (*it)->getY(), (*it)->getOrientation());
             ++it;
         }
     }
