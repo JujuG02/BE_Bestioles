@@ -21,6 +21,7 @@ int main()
    
    Gregaire* g = new Gregaire();
    Peureuse* p = new Peureuse();
+   Kamikaze* k = new Kamikaze();
 
    for ( int i = 1; i <= 5; ++i ){
       Bestiole* b = julien->createOreille(g);
@@ -33,11 +34,18 @@ int main()
       ecosysteme.getMilieu().addMember( b );
    }
 
+   for ( int i = 1; i <= 5; ++i ){
+      Bestiole* b = julien->createOreilleCustom(nullptr, 100 , 1, 10000, false, k);
+      ecosysteme.getMilieu().addMember( b );
+   }
+
+
    ecosysteme.run();
 
    delete julien;
    delete g;
    delete p;
+   delete k;
 
    return 0;
 }

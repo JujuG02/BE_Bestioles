@@ -6,8 +6,18 @@
 #include <cmath>
 
 void Kamikaze::move(std::vector<Bestiole> &bestioleList, Bestiole &b) {
-
+        
     const double VITESSE_MULTIPLIER = 10;
+
+    // Mise de couleur standard pour les peureuses (vert)
+    if (b.getCouleur()[0] != 255 || b.getCouleur()[1] != 0 || b.getCouleur()[2] != 0) {
+        T* couleur = new T[3];
+        couleur[0] = 255;
+        couleur[1] = 0;
+        couleur[2] = 0;
+
+        b.setCouleur(couleur);
+    }
 
     // on vérifie que la liste n'est pas vide
     if (bestioleList.empty()) return;
