@@ -44,8 +44,9 @@ void Kamikaze::move(std::vector<Bestiole> &bestioleList, Bestiole &b) {
     double dy = closeBestiole->getY() - b.getY();
     double orientation = atan2(-dy, dx);
 
-    std::cout<< "Le bestiole "<< b.getIdentite()<< "a pour orientation"<<b.getOrientation() <<','<<endl;
+    //std::cout<< "Le bestiole "<< b.getIdentite()<< "a pour orientation"<<b.getOrientation() <<','<<endl;
     b.setOrientation(orientation);
-    std::cout<<b.getOrientation()<<endl;
+    //std::cout<<b.getOrientation()<<endl;
     b.setVitesse(VITESSE_MULTIPLIER*closeBestiole->getVitesse());
     }
+
