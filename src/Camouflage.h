@@ -9,6 +9,7 @@ class Camouflage : public Decorator {
         double hidingCoeff;
         static const double MAX_HIDE;
         static const double MIN_HIDE;
+        static const double DIV_COLOR;
     
     public:
         Camouflage(Bestiole &b, double hidingCoeff);
@@ -18,7 +19,7 @@ class Camouflage : public Decorator {
         Camouflage* clone() const override;
         ~Camouflage() override final;
         
-        void draw(UImg &support) override final;
+        void draw(UImg & support, double x, double y, double orientation) override final;
 
         double getHidingCoeff() const;
 };

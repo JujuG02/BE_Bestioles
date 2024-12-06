@@ -57,9 +57,39 @@ Sensor::~Sensor(){
     delete this->bestiole;
 }
 
-void Sensor::draw(UImg &support) {
+void Sensor::draw(UImg & support, double x, double y, double orientation) {
     // Implémentation spécifique du sensor
-    this->bestiole->draw(support);
+    double startAngle = orientation - fov / 2;
+    double endAngle = orientation + fov / 2;
+    unsigned char black[] = {0, 0, 0};
+    unsigned char orange[] = {255, 165, 0};
+
+    // Calculate the number of points for the polygon
+    const int num_points = 20;
+    CImg<double> points(num_points + 1, 2);
+
+    
+    // Center point
+    points(0, 0) = static_cast<int>(x);;
+    points(0, 1) = static_cast<int>(y);
+    
+    // Points along the arc
+    for (int i = 0; i < num_points; i++) {
+        double angle = startAngle + i * (endAngle - startAngle) / (num_points - 1);
+        points(i+1, 0) = static_cast<int>(x + range * cos(angle));
+        points(i+1, 1) = static_cast<int>(y - range * sin(angle));
+    }
+    
+    
+    // Draw the filled arc as a polygon
+    if (fov < 1.5 * M_PI) {
+        support.draw_polygon(points, black, 0.2);
+    }
+    else {
+        support.draw_polygon(points, orange, 0.2);
+    }
+    
+    this->bestiole->draw(support, x, y, orientation);
 }
 
 bool Sensor::jeTeVois(const Bestiole &b) const{

@@ -10,7 +10,7 @@ class Decorator: public Bestiole {
     
     public:
         virtual ~Decorator() override = default;
-        virtual void draw(UImg &support) = 0;
+        virtual void draw(UImg & support, double x, double y, double orientation) = 0;
 
         void PrintMemory() override {
             std::cout<<"Decorator "<<this<<std::endl;

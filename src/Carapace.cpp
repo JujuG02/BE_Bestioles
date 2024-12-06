@@ -45,28 +45,24 @@ Carapace::~Carapace() {
     delete this->bestiole;
 }
 
-void Carapace::draw(UImg &support) {
+void Carapace::draw(UImg & support, double x, double y, double orientation) {  
     // Implémentation spécifique de la carapace
-   /*const double width = 20.0;
-    const double height = 10.0;
-    const double angle = orientation * M_PI / 180.0;
-
-    double x1 = x + width * cos(angle) - height * sin(angle);
-    double y1 = y + width * sin(angle) + height * cos(angle);
-    double x2 = x - width * cos(angle) - height * sin(angle);
-    double y2 = y - width * sin(angle) + height * cos(angle);
-    double x3 = x - width * cos(angle) + height * sin(angle);
-    double y3 = y - width * sin(angle) - height * cos(angle);
-    double x4 = x + width * cos(angle) + height * sin(angle);
-    double y4 = y + width * sin(angle) - height * cos(angle);
-
     unsigned char black[] = {0, 0, 0};
-    support.draw_line(x1, y1, x2, y2, black);
-    support.draw_line(x2, y2, x3, y3, black);
-    support.draw_line(x3, y3, x4, y4, black);
-    support.draw_line(x4, y4, x1, y1, black);*/
+    const double num_points = 6;
+    const double c_size = AFF_SIZE * 1.7;
+    double angle, angle2;
+    // Points along the polygon
+    for (int i = 0; i < num_points - 1; i++) {
+        angle = i * 2 * M_PI / num_points;
+        angle2 = (i + 1) * 2 * M_PI / num_points;
+        support.draw_line(x + c_size * cos(angle), y - c_size * sin(angle), x + c_size * cos(angle2), y - c_size * sin(angle2), black);
+    }
+    support.draw_line(x + c_size * cos(angle2), y - c_size * sin(angle2), x + c_size, y, black);
+    
+    
+    
 
-    this->bestiole->draw(support);
+    this->bestiole->draw(support, x, y, orientation);
 }
 
 bool Carapace::collision(double deathProbability){
