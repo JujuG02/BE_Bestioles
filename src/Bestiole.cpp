@@ -268,7 +268,6 @@ Behavior* Bestiole::getRandomBehavior()
       case 1:
          return new Peureuse();
       case 2:
-         printf("KAMIKAZE");
          return new Kamikaze();
       case 3:
          return new Prevoyante();
