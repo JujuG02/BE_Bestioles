@@ -46,7 +46,7 @@ Sensor& Sensor::operator=(Sensor const &s){
         this->range = s.range;
         this->detectionProb = s.detectionProb;
         this->fov = s.fov;
-        this->bestiole = s.bestiole;
+        this->bestiole = s.bestiole->clone();
     }
     std::cout<<"affect s"<<std::endl;
     return *this;
@@ -55,6 +55,9 @@ Sensor& Sensor::operator=(Sensor const &s){
 Sensor* Sensor::clone() const {
     std::cout<<"clone s"<<std::endl;
     return new Sensor(*this);
+}
+Sensor::~Sensor(){
+    delete this->bestiole;
 }
 
 void Sensor::draw(UImg &support) {

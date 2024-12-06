@@ -13,6 +13,11 @@ class Camouflage : public Decorator {
     public:
         Camouflage(Bestiole &b, double hidingCoeff);
         Camouflage(Bestiole &b);
+        Camouflage(Camouflage const &c);
+        Camouflage& operator=(Camouflage const &c);
+        Camouflage* clone() const override;
+        ~Camouflage() override final;
+        
         void draw(UImg &support) override final;
 
         double getHidingCoeff() const;

@@ -5,7 +5,9 @@
 #include "Peureuse.h"
 #include "Kamikaze.h"
 #include "Prevoyante.h"
+#include "Kamikaze.h"
 #include "Sensor.h"
+#include "BestioleCreator.h"
 
 #include <iostream>
 
@@ -15,29 +17,26 @@ int main()
 {
    Aquarium ecosysteme(640, 480, 30);
 
-   Gregaire g;
-   Peureuse p;
-   Prevoyante pr;
-   /*
-   for (int i = 1; i <= 20; ++i) {
-      Bestiole* b = new Bestiole();
-      b->setBehavior((Behavior&) g);
-      ecosysteme.getMilieu().addMember(b);
-   }
+   BestioleCreator* julien = new BestioleCreator();
    
-   for (int i = 1; i <= 20; ++i) {
-      Bestiole* b = new Bestiole();
-      b->setBehavior((Behavior&) p);
-      ecosysteme.getMilieu().addMember(b);
+   Gregaire* g = new Gregaire();
+   Peureuse* p = new Peureuse();
+
+   for ( int i = 1; i <= 5; ++i ){
+      Bestiole* b = julien->createOreille(g);
+      ecosysteme.getMilieu().addMember( b );
    }
-   */
-   for (int i = 1; i <= 20; ++i) {
-      Bestiole* b = new Bestiole();
-      b->setBehavior((Behavior&) pr);
-      ecosysteme.getMilieu().addMember(b);
+
+   for ( int i = 1; i <= 5; ++i ){
+      Bestiole* b = julien->createOreilleCustom(nullptr, 100 , 1, 10000, false, p);
+      ecosysteme.getMilieu().addMember( b );
    }
 
    ecosysteme.run();
+
+   delete julien;
+   delete g;
+   delete p;
 
    return 0;
 }

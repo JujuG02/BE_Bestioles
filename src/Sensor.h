@@ -24,6 +24,7 @@ class Sensor : public Decorator {
         Sensor(Sensor const &s); //might be useless
         Sensor& operator=(Sensor const &s); //might be useless
         Sensor* clone() const override; //might be useless
+        ~Sensor() override final;
 
         void draw(UImg &support) override final;
         bool jeTeVois(const Bestiole &b) const override;

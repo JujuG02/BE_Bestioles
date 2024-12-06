@@ -16,6 +16,27 @@ Nageoire::Nageoire(Bestiole &b) {
     this->vitesse = this->vitesse*speedCoeff;
 }
 
+Nageoire::Nageoire(Nageoire const &n) {
+    this->speedCoeff = n.speedCoeff;
+    this->bestiole = n.bestiole->clone();
+}
+
+Nageoire& Nageoire::operator=(Nageoire const &n) {
+    if(this != &n){
+        this->speedCoeff = n.speedCoeff;
+        this->bestiole = n.bestiole->clone();
+    }
+    return *this;
+}
+
+Nageoire* Nageoire::clone() const {
+    return new Nageoire(*this);
+}
+
+Nageoire::~Nageoire() {
+    delete this->bestiole;
+}
+
 void Nageoire::draw(UImg &support) {
     this->bestiole->draw(support);
 }

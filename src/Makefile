@@ -4,7 +4,7 @@ main : main.cpp Aquarium.o Bestiole.o Milieu.o BestioleCreator.o Gregaire.o Kami
 Aquarium.o : Aquarium.h Aquarium.cpp
 	g++ -Wall -std=c++17  -c Aquarium.cpp -I .
 
-Bestiole.o : Bestiole.h Bestiole.cpp Clone.h
+Bestiole.o : Bestiole.h Bestiole.cpp Clone.h Milieu.h
 	g++ -Wall -std=c++17  -c Bestiole.cpp -I .
 
 Milieu.o : Milieu.h Milieu.cpp

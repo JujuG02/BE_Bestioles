@@ -25,7 +25,7 @@ Bestiole* BestioleCreator::create(Bestiole *baseBestiole,
     if(baseBestiole == nullptr)
         res = new Bestiole();
     else
-        res = baseBestiole->clone();
+        res = baseBestiole;
     
     if(std::find(flags.begin(), flags.end(), "carapace") != flags.end()){
         if(deathCoeff==-1.0 || speedCoeff==-1.0)
@@ -64,7 +64,10 @@ Bestiole* BestioleCreator::create(Bestiole *baseBestiole,
         res->setAge(age);
 
     if(b != nullptr)
-        res->setBehavior(*b);
+    {
+        Behavior* newBehavior = b->clone();
+        res->setBehavior(*newBehavior);
+    }
     return res;
 }
 
