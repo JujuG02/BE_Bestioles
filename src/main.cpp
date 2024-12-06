@@ -1,8 +1,9 @@
 #include "Aquarium.h"
 #include "Milieu.h"
 #include "Bestiole.h"
-#include "BestioleCreator.h"
-#include "Behavior.h"
+#include "Gregaire.h"
+#include "Peureuse.h"
+#include "Kamikaze.h"
 #include "Gregaire.h"
 #include "Peureuse.h"
 #include "Prevoyante.h"
@@ -22,13 +23,16 @@ int main()
    BestioleCreator* julien = new BestioleCreator();
    
    Kamikaze* p = new Kamikaze();
-   
+
 
    for ( int i = 1; i <= 20; ++i ){
       Bestiole* b = julien->createOreille(p);
       b = julien->createCarapace(b, p);
       ecosysteme.getMilieu().addMember( b );
    }
+
+
+
    ecosysteme.run();
 
    delete julien;
