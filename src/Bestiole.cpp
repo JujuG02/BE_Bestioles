@@ -8,6 +8,7 @@
 
 #include <cstdlib>
 #include <cmath>
+#include <iostream>
 
 
 const double      Bestiole::AFF_SIZE = 8.;
@@ -267,6 +268,7 @@ Behavior* Bestiole::getRandomBehavior()
       case 1:
          return new Peureuse();
       case 2:
+         printf("KAMIKAZE");
          return new Kamikaze();
       case 3:
          return new Prevoyante();
@@ -274,6 +276,7 @@ Behavior* Bestiole::getRandomBehavior()
          return nullptr;
    }
 }
+
 
 void Bestiole::setOrientation(double orientation)
 {
@@ -324,6 +327,11 @@ double Bestiole::getCumulY() const
 int Bestiole::getIdentite() const
 {
    return identite;
+}
+
+T* Bestiole::getCouleur() const
+{
+   return couleur;
 }
 
 void Bestiole::setX(int x)
