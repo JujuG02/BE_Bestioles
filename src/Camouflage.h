@@ -7,6 +7,8 @@
 class Camouflage : public Decorator {
     private:
         double hidingCoeff;
+        static const double MAX_HIDE;
+        static const double MIN_HIDE;
     
     public:
         Camouflage(Bestiole &b, double hidingCoeff);

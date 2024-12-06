@@ -5,7 +5,9 @@
 #include "Peureuse.h"
 #include "Kamikaze.h"
 #include "Gregaire.h"
-#include "Behavior.h"
+#include "Peureuse.h"
+#include "Prevoyante.h"
+#include "Kamikaze.h"
 
 #include <iostream>
 
@@ -26,7 +28,7 @@ int main()
       ecosysteme.getMilieu().addMember( *b );
    }
 
-   for ( int i = 1; i <= 5; ++i ){
+   for ( int i = 1; i <= 20; ++i ){
       Bestiole* b = new Bestiole();
       b->setBehavior((Behavior&) p);
       ecosysteme.getMilieu().addMember( *b );
