@@ -16,6 +16,11 @@ class Carapace : public Decorator {
     public:
         Carapace(Bestiole &b, double deathCoeff, double speedCoeff);
         Carapace(Bestiole &b);
+        Carapace(Carapace const &c);
+        Carapace& operator=(Carapace const &c);
+        Carapace* clone() const override;
+        ~Carapace() override final;
+        
         void draw(UImg &support) override final;
         bool collision(double deathProbability);
 };

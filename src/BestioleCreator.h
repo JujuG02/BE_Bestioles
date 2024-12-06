@@ -7,6 +7,7 @@
 
 class BestioleCreator : public Creator {
     public :
+        virtual ~BestioleCreator() = default;
         Bestiole* create() const override;
         Bestiole* create(Bestiole *baseBestiole = nullptr,
                         const std::vector<std::string>& flags = {},

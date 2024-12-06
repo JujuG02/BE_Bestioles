@@ -46,9 +46,8 @@ private :
 public :                                           // Forme canonique :
    Bestiole( void );                               // Constructeur par defaut
    Bestiole( const Bestiole & b );                 // Constructeur de copies
-   ~Bestiole( void );                              // Destructeur
+   virtual ~Bestiole();                              // Destructeur
    Bestiole& operator=(const Bestiole &b);        // Operateur d'affectation
-   
    void action( Milieu & monMilieu );
    void draw( UImg & support ); //put to virtual if all decorators draw are coded
 
@@ -80,11 +79,17 @@ public :                                           // Forme canonique :
    double getCumulY() const;
    double getOrientation() const;
    double getVitesse() const;
+   int getIdentite() const;
 
    void setX(int x);
    void setY(int y);
    void setCumulX(double cumulX);
    void setCumulY(double cumulY);
+   void setCouleur(T *couleur);
+
+   virtual void PrintMemory(){
+      std::cout<<"Bestiole "<<this<<std::endl;
+   }
 };
 
 #endif

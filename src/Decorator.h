@@ -9,7 +9,13 @@ class Decorator: public Bestiole {
         Bestiole *bestiole;
     
     public:
+        virtual ~Decorator() override = default;
         virtual void draw(UImg &support) = 0;
+
+        void PrintMemory() override {
+            std::cout<<"Decorator "<<this<<std::endl;
+            this->bestiole->PrintMemory();
+        }
 
 };
 

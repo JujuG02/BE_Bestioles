@@ -22,6 +22,29 @@ Carapace::Carapace(Bestiole &b) {
     this->vitesse = this->vitesse*speedCoeff;
 }
 
+Carapace::Carapace(Carapace const &c) {
+    this->deathCoeff = c.deathCoeff;
+    this->speedCoeff = c.speedCoeff;
+    this->bestiole = c.bestiole->clone();
+}
+
+Carapace& Carapace::operator=(Carapace const &c) {
+    if(this != &c){
+        this->deathCoeff = c.deathCoeff;
+        this->speedCoeff = c.speedCoeff;
+        this->bestiole = c.bestiole->clone();
+    }
+    return *this;
+}
+
+Carapace* Carapace::clone() const {
+    return new Carapace(*this);
+}
+
+Carapace::~Carapace() {
+    delete this->bestiole;
+}
+
 void Carapace::draw(UImg &support) {
     // Implémentation spécifique de la carapace
    /*const double width = 20.0;
