@@ -8,8 +8,8 @@ class Bestiole;
 class Peureuse : public Behavior {
 
 private: 
-int cooldownTime;
-int currentCooldown; 
+int currentCooldown = 0; 
+const int cooldownTime = 60;
 
 public:
     Peureuse() : cooldownTime(60), currentCooldown(0) {}
