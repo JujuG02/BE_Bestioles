@@ -26,7 +26,8 @@ Ce projet consiste à simuler un écosystème d'un aquarium peuplé de bestioles
 - `Nageoire.h` / `Nageoire.cpp` : Définition et implémentation de l'accessoire de nageoire.
 - `Peureuse.h` / `Peureuse.cpp` : Définition et implémentation de la classe représentant le comportement peureux.
 - `Prevoyante.h` / `Prevoyante.cpp` : Définition et implémentation de la classe représentant le comportement prévoyant.
-- `Sensor.h` / `Sensor.cpp` : Définition et implémentation des capteurs sensoriels pour les bestioles.
+- `Sensor.h` / `Sensor.cpp` : Définition et implémentation des capteurs sensoriels (oreilles, yeux...) pour les bestioles.
+- `Carapace.h` / `Carapace.cpp` : Définition et implémentation de la classe représentant l'accessoire de carapace.
 - `Clone.h` : Définition de l'interface de clonage pour les bestioles.
 - `Creator.h` : Définition de l'interface de création pour les bestioles.
 - `Decorator.h` : Définition de la classe de décoration pour ajouter des fonctionnalités aux bestioles.
