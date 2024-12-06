@@ -21,8 +21,8 @@ int main()
    BestioleCreator* julien = new BestioleCreator();
    
    Gregaire* g = new Gregaire();
-   Peureuse* p = new Peureuse();
    Kamikaze* k = new Kamikaze();
+   Prevoyante* p = new Prevoyante();
 
 
    for (int i = 1; i <= 10; ++i){
@@ -31,14 +31,11 @@ int main()
       c = julien->createCamouflageMB(c);
       ecosysteme.getMilieu().addMember( c );
    }
-   
-   
-   
-   for (int i = 1; i <= 5; ++i){
-      Bestiole* d = julien->createYeux(p);
-      ecosysteme.getMilieu().addMember( d );
+
+   for ( int i = 1; i <= 3; ++i ){
+      Bestiole* b = julien->createOreilleMB();
+      ecosysteme.getMilieu().addMember( b );
    }
-   
 
    ecosysteme.run();
 
