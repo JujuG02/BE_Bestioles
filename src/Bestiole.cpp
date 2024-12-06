@@ -25,7 +25,7 @@ Bestiole::Bestiole( void )
 
    identite = ++next;
 
-   cout << "const Bestiole (" << identite << ") par defaut" << endl;
+   //cout << "const Bestiole (" << identite << ") par defaut" << endl;
 
    age = rand() % (MAX_AGE - MIN_AGE + 1) + MIN_AGE;
    x = y = 0;
@@ -48,7 +48,7 @@ Bestiole::Bestiole( const Bestiole & b )
 
    identite = ++next;
 
-   cout << "const Bestiole (" << identite << ") par copie" << endl;
+   //cout << "const Bestiole (" << identite << ") par copie" << endl;
 
    age = b.age;
    x = b.x;
@@ -59,9 +59,7 @@ Bestiole::Bestiole( const Bestiole & b )
    vitesse = b.vitesse;
    couleur = new T[ 3 ];
    memcpy( couleur, b.couleur, 3*sizeof(T) );
-   //TODO: Implement behavior copy
-   //behavior = b.behavior->clone();
-   behavior = getRandomBehavior(); //TODO: Remove this line
+   behavior = b.behavior->clone();
 }
 
 
@@ -70,7 +68,7 @@ Bestiole::~Bestiole( void )
    delete[] couleur;
    delete behavior;
 
-   cout << "dest Bestiole" << endl;
+   //cout << "dest Bestiole" << endl;
 
 }
 
@@ -85,8 +83,7 @@ Bestiole &Bestiole::operator=(const Bestiole &b)
         couleur = new T[3];
         memcpy(couleur, b.couleur, 3 * sizeof(T));
 
-        //behavior = b.behavior ? b.behavior->clone() : nullptr;
-         behavior = getRandomBehavior(); //TODO: Remove this line
+        behavior = b.behavior->clone();
 
         // Copy other members
         age = b.age;
@@ -180,11 +177,11 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 bool Bestiole::jeTeVois(const Bestiole & b) const
 {
    //TODO: a basic bestiole is blind
-   double         dist;
+   /*double         dist;
    dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
-   return ( dist <= LIMITE_VUE );
+   return ( dist <= LIMITE_VUE );*/
    
-   //return false;
+   return false;
 }
 
 Bestiole* Bestiole::clone() const
@@ -196,7 +193,7 @@ void Bestiole::move(Milieu &monMilieu)
 {
    double changingBehaviorProb = 0.05;
 
-   auto detectedVoisins = monMilieu.getVoisins(*this);
+   auto detectedVoisins = monMilieu.getVoisins(this);
    if(this->isMultipleBehavior){
       double randomValue = static_cast<double>(rand()) / RAND_MAX;
       if (randomValue < changingBehaviorProb) {

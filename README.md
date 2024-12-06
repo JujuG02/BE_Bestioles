@@ -26,7 +26,7 @@ Ce projet consiste à simuler un écosystème d'un aquarium peuplé de bestioles
 
 2. Compilez le projet :
    ```bash
-   cd votre-depot
+   cd BE_Bestioles/src/
    make
 
 3. Exécutez le programme :
