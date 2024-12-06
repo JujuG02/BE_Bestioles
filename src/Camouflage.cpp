@@ -47,6 +47,15 @@ void Camouflage::draw(UImg & support, double x, double y, double orientation) {
     this->bestiole->draw(support, x, y, orientation);
 }
 
+bool Camouflage::collision(double deathProbability) {
+    return this->bestiole->collision(deathProbability);
+}
+
+bool Camouflage::jeTeVois(const Bestiole &b) const {
+    return this->bestiole->jeTeVois(b);
+}
+
 double Camouflage::getHidingCoeff() const {
     return hidingCoeff;
 }
+

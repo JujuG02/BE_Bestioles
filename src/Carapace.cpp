@@ -66,16 +66,9 @@ void Carapace::draw(UImg & support, double x, double y, double orientation) {
 }
 
 bool Carapace::collision(double deathProbability){
-   double randomValue = static_cast<double>(rand()) / RAND_MAX;
-   randomValue = randomValue * this->deathCoeff;
-   if (randomValue < deathProbability) {
-      cout<<"Bestiole "<<this->identite<<" is dead cause of collision"<<endl;
-      return true;
-   } else {
-      orientation += M_PI;
-      if (orientation > 2 * M_PI) {
-         orientation -= 2 * M_PI;
-      }
-      return false;
-   }
+   return this->bestiole->collision(deathProbability*this->deathCoeff);
+}
+
+bool Carapace::jeTeVois(const Bestiole &b) const {
+   return this->bestiole->jeTeVois(b);
 }

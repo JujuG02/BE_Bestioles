@@ -27,7 +27,8 @@ class Sensor : public Decorator {
         ~Sensor() override final;
 
         void draw(UImg & support, double x, double y, double orientation) override final;
-        bool jeTeVois(const Bestiole &b) const override;
+        bool collision(double deathProbability) override final;
+        bool jeTeVois(const Bestiole &b) const override final;
 };
 
 #endif
