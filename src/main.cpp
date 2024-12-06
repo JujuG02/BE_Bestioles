@@ -16,7 +16,7 @@ using namespace std;
 int main()
 {
 
-   Aquarium       ecosysteme( 1280, 720, 30 );
+   Aquarium ecosysteme(640, 480, 30);
 
    BestioleCreator* julien = new BestioleCreator();
    
@@ -24,15 +24,9 @@ int main()
    Peureuse* p = new Peureuse();
    Kamikaze* k = new Kamikaze();
 
-   /*
-   for ( int i = 1; i <= 5; ++i ){
-      Bestiole* b = julien->createOreille((Behavior*)&p);
-      b = julien->createCarapace(b, (Behavior*)&p);
-      ecosysteme.getMilieu().addMember( b );
-   }
-   */
+
    for (int i = 1; i <= 10; ++i){
-      Bestiole* c = julien->createCarapaceMB();
+      Bestiole* c = julien->createCarapace(p);
       //c = julien->createYeuxMB(c);
       c = julien->createCamouflageMB(c);
       ecosysteme.getMilieu().addMember( c );
@@ -41,22 +35,17 @@ int main()
    
    
    for (int i = 1; i <= 5; ++i){
-      Bestiole* d = julien->createYeuxMB();
+      Bestiole* d = julien->createYeux(p);
       ecosysteme.getMilieu().addMember( d );
    }
-   
-  /*
-   for (int i = 1; i <= 5; ++i){
-      Bestiole* e = julien->createCarapaceMB();
-      ecosysteme.getMilieu().addMember( e );
-
-   }
-   */
    
 
    ecosysteme.run();
 
+   delete julien;
+   delete g;
+   delete p;
+   delete k;
+
    return 0;
-
-
 }
