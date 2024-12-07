@@ -100,18 +100,17 @@ bool Sensor::jeTeVois(const Bestiole &b) const{
     int bx = b.getX();
     int by = b.getY();
     double dist = std::sqrt( (this->x - bx)*(this->x - bx) + (this->y - by)*(this->y - by) );
-    double angle = std::atan2(by - this->y, bx - this->x);
+    double angle = std::atan2(bx - this->x, by - this->y);
 
     bool detecable = dist<=this->range
-        && std::abs(angle - this->bestiole->getOrientation()) <= this->fov/2;
+        && std::abs(angle - this->getOrientation()) <= this->fov/2;
     
     double randomValue = static_cast<double>(rand()) / RAND_MAX;
-    double detectionProba = this->detectionProb;
-    const Camouflage* camo = dynamic_cast<const Camouflage*>(&b);
-    if (camo) {
-        double hidingCoeff = camo->getHidingCoeff();
-        detectionProba = detectionProba * hidingCoeff;
-    }
+    double detectionProba = this->detectionProb * b.getHidingCoeff();
 
-    return detecable && randomValue < detectionProba;
+    return detecable && randomValue <= detectionProba;
+}
+
+double Sensor::getHidingCoeff() const {
+    return this->bestiole->getHidingCoeff();
 }
