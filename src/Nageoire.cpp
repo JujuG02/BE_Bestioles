@@ -11,9 +11,8 @@ Nageoire::Nageoire(Bestiole &b, double speedCoeff) {
 Nageoire::Nageoire(Bestiole &b) {
     this->bestiole = &b;
 
-    std::srand(std::time(nullptr));
     this->speedCoeff = 1 + (static_cast<double>(std::rand()) / (RAND_MAX * (MAX_SPEED_COEFF - 1)));
-    this->vitesse = this->vitesse*speedCoeff;
+    this->setVitesse(this->vitesse*speedCoeff);
 }
 
 Nageoire::Nageoire(Nageoire const &n) {
@@ -61,7 +60,11 @@ void Nageoire::draw(UImg & support, double x, double y, double orientation, T* c
 }
 
 bool Nageoire::collision(double deathProbability) {
-    return this->bestiole->collision(deathProbability);
+    bool coll = this->bestiole->collision(deathProbability);
+    if(!coll){
+        orientation = turn(orientation);
+    }
+    return coll;
 }
 
 bool Nageoire::jeTeVois(const Bestiole &b) const {

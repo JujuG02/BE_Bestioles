@@ -11,7 +11,6 @@ Camouflage::Camouflage(Bestiole &b, double hidingCoeff) {
 Camouflage::Camouflage(Bestiole &b) {
     this->bestiole = &b;
 
-    std::srand(std::time(nullptr));
     this->hidingCoeff = MIN_HIDE + static_cast<double>(std::rand()) / RAND_MAX * (MAX_HIDE - MIN_HIDE);
 }
 
@@ -48,7 +47,11 @@ void Camouflage::draw(UImg & support, double x, double y, double orientation, T*
 }
 
 bool Camouflage::collision(double deathProbability) {
-    return this->bestiole->collision(deathProbability);
+    bool coll =this->bestiole->collision(deathProbability);
+    if(!coll){
+        orientation = turn(orientation);
+    }
+    return coll;
 }
 
 bool Camouflage::jeTeVois(const Bestiole &b) const {

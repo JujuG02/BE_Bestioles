@@ -88,6 +88,7 @@ public :                                           // Forme canonique :
    void setCumulX(double cumulX);
    void setCumulY(double cumulY);
    void setCouleur(T *couleur);
+   double turn(double orientation);
 
    virtual void PrintMemory(){
       std::cout<<"Bestiole "<<this<<std::endl;

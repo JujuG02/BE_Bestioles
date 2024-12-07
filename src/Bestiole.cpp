@@ -221,12 +221,18 @@ bool Bestiole::collision(double deathProbabilty)
       cout<<"Bestiole "<<this->identite<<" is dead cause of collision"<<endl;
       return true;
    } else {
-      orientation += M_PI;
-      if (orientation > 2 * M_PI) {
-         orientation -= 2 * M_PI;
-      }
+      orientation = turn(orientation);
       return false;
    }
+}
+
+double Bestiole::turn(double orientation)
+{
+   orientation += M_PI;
+   if (orientation > 2 * M_PI) {
+      orientation -= 2 * M_PI;
+   }
+   return orientation;
 }
 
 bool Bestiole::isColliding(const Bestiole &b) const{

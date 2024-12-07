@@ -66,7 +66,11 @@ void Carapace::draw(UImg & support, double x, double y, double orientation, T* c
 }
 
 bool Carapace::collision(double deathProbability){
-   return this->bestiole->collision(deathProbability*this->deathCoeff);
+   bool coll = this->bestiole->collision(deathProbability*this->deathCoeff);
+    if(!coll){
+         orientation = turn(orientation);
+    }
+    return coll;
 }
 
 bool Carapace::jeTeVois(const Bestiole &b) const {
