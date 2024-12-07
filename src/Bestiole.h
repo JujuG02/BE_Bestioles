@@ -13,32 +13,37 @@ using namespace std;
 
 class Milieu;
 
+/*
+* Une Bestiole est l'entité principale de notre simulation.
+* Elle est caractérisée par plusieurs attributs mentionnés plus bas.
+* Elle peut aussi avoir des atouts grâce aux décorateurs : Camouflage, Carapace, Nageoire, et Sensor.
+*/
 
 class Bestiole : public Clone
 {
 
 protected :
-   static const double     AFF_SIZE;
-   static const double     MAX_VITESSE;
-   static const double     LIMITE_VUE;
-   static const int        MAX_AGE;
-   static const int        MIN_AGE;
+   static const double     AFF_SIZE;      // Taille d'affichage d'une bestiole dans la fenêtre graphique
+   static const double     MAX_VITESSE;   // Vitesse maximale d'une bestiole
+   static const double     LIMITE_VUE;    // Distance de perception d'une bestiole
+   static const int        MAX_AGE;       // Age maximal d'une bestiole
+   static const int        MIN_AGE;       // Age minimal d'une bestiole
 
-   static int              next;
-   static int              simulationAge;
+   static int              next;          // Identifiant du prochain objet a instancier
+   static int              simulationAge; // Age de la simulation
 
 protected :
-   int               identite;
-   int               x, y;
-   int               age;
+   int               identite;            // Identifiant de la bestiole
+   int               x, y;                // Coordonnées de la bestiole
+   int               age;                 // Age de la bestiole
    double            cumulX, cumulY;
-   double            orientation;
-   double            vitesse;
+   double            orientation;         // Orientation de la bestiole en radians
+   double            vitesse;             // Vitesse de la bestiole
 
    T               * couleur;
 
-   Behavior        * behavior;
-   bool            isMultipleBehavior;
+   Behavior        * behavior;            // Comportement de la bestiole
+   bool            isMultipleBehavior;    // Vaut true si la bestiole a plusieurs comportements (changement aléatoire)
 
 private :
    void bouge( int xLim, int yLim );
@@ -49,7 +54,7 @@ public :                                           // Forme canonique :
    virtual ~Bestiole();                              // Destructeur
    Bestiole& operator=(const Bestiole &b);        // Operateur d'affectation
    void action( Milieu & monMilieu );
-   virtual void draw( UImg & support, double x, double y, double orientation, T* couleur ); //put to virtual if all decorators draw are coded
+   virtual void draw( UImg & support, double x, double y, double orientation, T* couleur );
 
    virtual bool jeTeVois( const Bestiole & b ) const;
 

@@ -11,7 +11,7 @@
 #include <iostream>
 
 
-const double      Bestiole::AFF_SIZE = 8.;
+const double      Bestiole::AFF_SIZE = 8.; 
 const double      Bestiole::MAX_VITESSE = 10.;
 const double      Bestiole::LIMITE_VUE = 30.;
 const int         Bestiole::MAX_AGE = 10000;
@@ -145,7 +145,7 @@ void Bestiole::bouge( int xLim, int yLim )
 
 }
 
-
+// Fonction exécutée par le mileu
 void Bestiole::action( Milieu & monMilieu )
 {
    this->move(monMilieu);
@@ -153,6 +153,7 @@ void Bestiole::action( Milieu & monMilieu )
    simulationAge++;
 }
 
+// Affichage de la bestiole
 void Bestiole::draw( UImg & support, double x, double y, double orientation, T* couleur )
 {
 
@@ -176,11 +177,8 @@ bool operator==( const Bestiole & b1, const Bestiole & b2 )
 
 bool Bestiole::jeTeVois(const Bestiole & b) const
 {
-   //TODO: a basic bestiole is blind
-   /*double         dist;
-   dist = std::sqrt( (x-b.x)*(x-b.x) + (y-b.y)*(y-b.y) );
-   return ( dist <= LIMITE_VUE );*/
-   
+   // Par défaut, la bestiole ne voit rien.
+   // Pour qu'elle puisse voir d'autres bestioles il lui faut des yeux ou oreilles (décorateurs)
    return false;
 }
 
@@ -191,7 +189,7 @@ Bestiole* Bestiole::clone() const
 
 void Bestiole::move(Milieu &monMilieu)
 {
-   double changingBehaviorProb = 0.05;    //should be set as global constant in the future
+   double changingBehaviorProb = 0.05;  // Probabilité que la bestiole change de comportement à chaque pas
 
    auto detectedVoisins = monMilieu.getVoisins(this);
    if(this->isMultipleBehavior){

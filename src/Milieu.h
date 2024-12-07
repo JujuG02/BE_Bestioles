@@ -9,6 +9,11 @@
 
 using namespace std;
 
+/*
+* Le milieu contient l'ensemble des bestioles.
+* Il est responsable de l'évolution de la simulation. (changement de position des bestioles, collision, etc.)
+*/
+
 class Milieu : public UImg
 {
 private:
