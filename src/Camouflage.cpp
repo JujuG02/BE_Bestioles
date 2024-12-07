@@ -38,13 +38,16 @@ Camouflage::~Camouflage() {
 
 void Camouflage::draw(UImg & support, double x, double y, double orientation, T* couleur) {
     // Implémentation spécifique du camouflage
+    // Le camouflage est représenté par une couleur plus claire, et un disque transparent entourant la bestiole
     T* couleurtoset = new T[3];
-    T* couleurbis = this->getCouleur();
-    couleurtoset[0] = couleurbis[0]*DIV_COLOR;
+    T* couleurbis = this->getCouleur(); // On récupère la couleur de la bestiole
+    couleurtoset[0] = couleurbis[0]*DIV_COLOR;  // Puis on la rend plus claire
     couleurtoset[1] = couleurbis[1]*DIV_COLOR;
     couleurtoset[2] = couleurbis[2]*DIV_COLOR;
-    this->setCouleur(couleurtoset);
-    support.draw_circle(x, y, 1.6 * AFF_SIZE, couleurtoset, 0.2 );
+    this->setCouleur(couleurtoset);             
+    support.draw_circle(x, y, 1.6 * AFF_SIZE, couleurtoset, 0.2 ); // On dessine un cercle de la même couleur autour
+    
+    // Le reste de l'affichage est géré par la bestiole décorée antérieure.
     this->bestiole->draw(support, x, y, orientation, couleurtoset);
 }
 

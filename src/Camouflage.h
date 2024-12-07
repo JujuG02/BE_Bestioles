@@ -3,13 +3,16 @@
 
 #include "Decorator.h"
 #include <vector>
-
+/*
+* Cette classe hérite de Decorator et permet de décorer une bestiole avec un camouflage
+* Le camouflage est un atout qui permet de réduire la probabilité que la bestiole soit vue par une autre
+*/
 class Camouflage : public Decorator {
     private:
-        double hidingCoeff;
-        static const double MAX_HIDE;
-        static const double MIN_HIDE;
-        static const double DIV_COLOR;
+        double hidingCoeff;  // Ce coefficient vient se multiplier à la probabilité de détection de la bestiole
+        static const double MAX_HIDE; // Coefficient de camouflage maximal
+        static const double MIN_HIDE; // Coefficient de camouflage minimal
+        static const double DIV_COLOR; // Coefficient d'éclaircissement de la couleur (pour la méthode draw)
     
     public:
         Camouflage(Bestiole &b, double hidingCoeff);

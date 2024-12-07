@@ -5,13 +5,18 @@
 #include "Bestiole.h"
 #include <vector>
 
+/*
+* Cette classe hérite de Decorator et permet de décorer une bestiole avec une carapace.
+* La carapace est un atout qui permet de réduire la probabilité de mort de la bestiole.
+* Elle réduit également la vitesse de la bestiole.
+*/
 
 class Carapace : public Decorator {
     private:
-        double deathCoeff;
-        double speedCoeff;
-        static const double MIN_SPEED_COEFF;
-        static const double MIN_DEATH_COEFF;
+        double deathCoeff; // Ce coefficient vient se multiplier au coefficient deathProbability lors d'une collision
+        double speedCoeff; // Ce coefficient vient se multiplier au coefficient vitesse.
+        static const double MIN_SPEED_COEFF; // Coefficient de vitesse minimal
+        static const double MIN_DEATH_COEFF; // Coefficient de mort minimal
     
     public:
         Carapace(Bestiole &b, double deathCoeff, double speedCoeff);
