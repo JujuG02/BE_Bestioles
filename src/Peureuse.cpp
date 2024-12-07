@@ -31,8 +31,6 @@ void Peureuse::move(std::vector<Bestiole>& bestioleList, Bestiole& b) {
         // Ajustement de l'orientation et de la vitesse pour fuir
         b.setOrientation(fleeOrientation);
         b.setVitesse(b.getVitesse() * FLEE_SPEED_MULTIPLIER);
-        b.setCumulX(std::cos(fleeOrientation) * b.getVitesse());
-        b.setCumulY(-std::sin(fleeOrientation) * b.getVitesse());
 
         return;
     }
@@ -40,7 +38,5 @@ void Peureuse::move(std::vector<Bestiole>& bestioleList, Bestiole& b) {
     // Si aucune bestiole n'est détectée, la vitesse revient à la normale
     if (b.getVitesse() > ORIGINAL_SPEED) {  // Permet de s'assurer que la vitesse revient à la normale une seule fois
         b.setVitesse(ORIGINAL_SPEED);
-        b.setCumulX(std::cos(b.getOrientation()) * b.getVitesse());
-        b.setCumulY(-std::sin(b.getOrientation()) * b.getVitesse());
     }
 }

@@ -86,8 +86,7 @@ void Sensor::draw(UImg & support, double x, double y, double orientation, T* cou
     }
     
     // Draw the filled arc as a polygon
-    if (fov < 1.5 * M_PI) {
-        // Yeux
+    if (fov < 2 * M_PI) {
         support.draw_polygon(points, black, 0.2);
     }
     else {
@@ -100,22 +99,27 @@ void Sensor::draw(UImg & support, double x, double y, double orientation, T* cou
 }
 
 bool Sensor::collision(double deathProbability){
-    return this->bestiole->collision(deathProbability);
+    bool coll = this->bestiole->collision(deathProbability);
+    if(!coll){
+        orientation = turn(orientation);
+    }
+    return coll;
 }
 
 bool Sensor::jeTeVois(const Bestiole &b) const{
     int bx = b.getX();
     int by = b.getY();
     double dist = std::sqrt( (this->x - bx)*(this->x - bx) + (this->y - by)*(this->y - by) );
-    double angle = std::atan2(bx - this->x, by - this->y);
+    double angle = std::atan2(by - this->y, bx - this->x);
 
-    bool detecable = dist<=this->range
-        && std::abs(angle - this->getOrientation()) <= this->fov/2;
+    bool detecable = dist<=this->range;
+    if(this->fov != 2*M_PI)
+        detecable = detecable && std::abs(angle - this->getOrientation()) <= this->fov/2;
     
     double randomValue = static_cast<double>(rand()) / RAND_MAX;
     double detectionProba = this->detectionProb * b.getHidingCoeff();
 
-    return detecable && randomValue <= detectionProba;
+    return (detecable && randomValue <= detectionProba) || this->bestiole->jeTeVois(b);
 }
 
 double Sensor::getHidingCoeff() const {
