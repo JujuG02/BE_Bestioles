@@ -20,22 +20,29 @@ int main()
 
    BestioleCreator* julien = new BestioleCreator();
    
-   Peureuse* g = new Peureuse();
+   Gregaire* g = new Gregaire();
+   Peureuse* pe = new Peureuse();
    Kamikaze* k = new Kamikaze();
    Prevoyante* p = new Prevoyante();
 
 
-   for (int i = 1; i <= 10; ++i){
-      Bestiole* c = julien->createCarapace(g);
-      c = julien->createOreille(c, g);
+   for (int i = 1; i <= 1; ++i){
+      Bestiole* c = julien->createCarapace(pe);
+      c = julien->createYeuxCustom(c, 150, 1.0, 4, 10000, false, k);
+
+      //Bestiole* c2 = julien->createCamouflageCustom(nullptr, 0, 1000, true, k);
+      Bestiole* c2 = julien->createCamouflageCustom(nullptr, 0., 10000, false, g);
+      c2 = julien->createNageoire(c2, g);
       //c = julien->createYeuxMB(c);
       //c = julien->createCamouflageMB(c);
       ecosysteme.getMilieu().addMember( c );
+      ecosysteme.getMilieu().addMember( c2 );
    }
 
    ecosysteme.run();
 
    delete julien;
+   delete pe;
    delete g;
    delete p;
    delete k;

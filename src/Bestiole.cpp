@@ -332,6 +332,11 @@ T* Bestiole::getCouleur() const
    return couleur;
 }
 
+double Bestiole::getHidingCoeff() const
+{
+   return 1.0;
+}
+
 void Bestiole::setX(int x)
 {
    this->x = x;

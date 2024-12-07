@@ -139,7 +139,7 @@ Bestiole* BestioleCreator::createOreilleMB() {
     return create(nullptr, {"oreille"}, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, true, -1, nullptr);
 }
 Bestiole* BestioleCreator::createOreilleCustom(Bestiole *baseBestiole, double range, double detectionProb, int age, bool isMultipleBehavior, Behavior *b) {
-    return create(baseBestiole, {"oreille"}, range, detectionProb, -1.0, -1.0, -1.0, -1.0, isMultipleBehavior, age, b);
+    return create(baseBestiole, {"oreille"}, -1.0, range, detectionProb, -1.0, -1.0, -1.0, isMultipleBehavior, age, b);
 }
 
 
@@ -156,7 +156,7 @@ Bestiole* BestioleCreator::createYeuxMB() {
     return create(nullptr, {"yeux"}, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, true, -1, nullptr);
 }
 Bestiole* BestioleCreator::createYeuxCustom(Bestiole *baseBestiole, double range, double detectionProb, double fov, int age, bool isMultipleBehavior, Behavior *b) {
-    return create(baseBestiole, {"yeux"}, range, detectionProb, fov, -1.0, -1.0, -1.0, isMultipleBehavior, age, b);
+    return create(baseBestiole, {"yeux"}, fov, range, detectionProb, -1.0, -1.0, -1.0, isMultipleBehavior, age, b);
 }
 
 

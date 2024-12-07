@@ -81,6 +81,7 @@ public :                                           // Forme canonique :
    double getVitesse() const;
    int getIdentite() const;
    T* getCouleur() const;
+   virtual double getHidingCoeff() const;
 
    void setX(int x);
    void setY(int y);

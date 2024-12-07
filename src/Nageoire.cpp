@@ -67,3 +67,7 @@ bool Nageoire::collision(double deathProbability) {
 bool Nageoire::jeTeVois(const Bestiole &b) const {
     return this->bestiole->jeTeVois(b);
 }
+
+double Nageoire::getHidingCoeff() const {
+    return this->bestiole->getHidingCoeff();
+}

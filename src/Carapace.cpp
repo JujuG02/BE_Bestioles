@@ -72,3 +72,7 @@ bool Carapace::collision(double deathProbability){
 bool Carapace::jeTeVois(const Bestiole &b) const {
    return this->bestiole->jeTeVois(b);
 }
+
+double Carapace::getHidingCoeff() const {
+    return this->bestiole->getHidingCoeff();
+}
