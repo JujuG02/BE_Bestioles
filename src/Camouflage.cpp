@@ -44,6 +44,7 @@ void Camouflage::draw(UImg & support, double x, double y, double orientation, T*
     couleurtoset[1] = couleurbis[1]*DIV_COLOR;
     couleurtoset[2] = couleurbis[2]*DIV_COLOR;
     this->setCouleur(couleurtoset);
+    support.draw_circle(x, y, 1.6 * AFF_SIZE, couleurtoset, 0.2 );
     this->bestiole->draw(support, x, y, orientation, couleurtoset);
 }
 
