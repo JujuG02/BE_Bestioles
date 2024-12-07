@@ -4,10 +4,15 @@
 #include "Decorator.h"
 #include <vector>
 
+/*
+* Cette classe hérite de Decorator et permet de décorer une bestiole avec des nageoires.
+* Les nageoires sont un atout permettant d'augmenter la vitesse de la bestiole
+*/
+
 class Nageoire : public Decorator {
     private:
-        double speedCoeff;
-        static const double MAX_SPEED_COEFF;
+        double speedCoeff;  // Ce coefficient vient se multiplier au coefficient vitesse.
+        static const double MAX_SPEED_COEFF; // Coefficient de vitesse maximal
     
     public:
         Nageoire(Bestiole &b, double speedCoeff);

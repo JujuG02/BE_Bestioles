@@ -4,6 +4,13 @@
 #include <vector>
 #include "Bestiole.h"
 
+/*
+* Cette classe est une classe abstraite qui permet de décorer une bestiole.
+* Elle est utilisée pour ajouter des fonctionnalités à une bestiole sans modifier son code.
+* Son utilisation peut être vue comme si on embriquait des poupées russes, 
+* chaque poupée représentant une décoration de la bestiole.
+*/
+
 class Decorator: public Bestiole {
     protected:
         Bestiole *bestiole;
