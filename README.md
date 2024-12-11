@@ -3,9 +3,9 @@
 # Simulation d'un Écosystème - Aquarium
 
 ## Description du Projet
-Ce projet consiste à simuler un écosystème d'un aquarium peuplé de bestioles. Chaque bestiole se déplace dans l'aquarium, interagit avec son environnement et peut évoluer au fil du temps. Le projet utilise des design patterns pour structurer le code et faciliter les évolutions futures.
+Ce projet consiste à simuler un écosystème d'un aquarium peuplé de bestioles. Chaque bestiole se déplace dans l'aquarium, interagit avec son environnement et peut évoluer au fil du temps. Le projet utilise des design patterns (Factory, Prototype et Decorator) pour structurer le code et faciliter les évolutions futures.
 
-## Fonctionnalités
+## Fonctionnalités principales
 - **Déplacement des bestioles** : Chaque bestiole se déplace avec une vitesse et une direction aléatoires ;
 - **Naissance et Mort** : Les bestioles peuvent naître spontanément ou suite à un événement extérieur, et meurent après un certain temps ou en cas de collision ;
 - **Clonage** : Les bestioles peuvent se cloner, augmentant ainsi leur population ;
