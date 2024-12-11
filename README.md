@@ -13,7 +13,7 @@ Ce projet consiste à simuler un écosystème d'un aquarium peuplé de bestioles
 
 ## Structure du Code
 
-- `main.cpp` : Point d'entrée du programme.
+- `main.cpp` : Point d'entrée du programme. Vous pouvez choisir la configuration souhaitée des bestioles ou en créer une.
 - `Bestiole.h` / `Bestiole.cpp` : Définition et implémentation de la classe Bestiole.
 - `BestioleCreator.h` / `BestioleCreator.cpp` : Définition et implémentation de la classe de création des bestioles.
 - `Aquarium.h` / `Aquarium.cpp` : Définition et implémentation de la classe Aquarium.
